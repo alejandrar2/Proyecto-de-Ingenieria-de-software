@@ -16,15 +16,4 @@ export class CategoriaService {
     return this.http.get(this.urlApi);
 
   }
-
-
-
-
-
-
-
-
-
-
-
 }

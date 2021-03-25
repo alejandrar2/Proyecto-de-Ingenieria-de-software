@@ -17,15 +17,14 @@
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
-            <th scope="col">Eliminar</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of categorias" >
-            <th scope="row">1</th>
-            <td>{{ item.nombre }}</td>
-            <td>{{item.descripcion}}</td>
-            <td> <button class="btn btn-danger btn-sm" >Eliminar</button> </td>
+        <tr *ngFor="let categoria of categorias" >
+            <td scope="row">{{categoria.id}}</td>
+            <td>{{categoria.nombre}}</td>
+            <td>{{categoria.descripcion}}</td>
+            <td><button type="button" class="btn btn-danger" (click)="eliminarCategoria(categoria.id)">X</button></td>
         </tr>
     </tbody>
 </table>
@@ -44,21 +43,23 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput">Nombre de la categoria</label>
-                        <input type="text"  class="form-control" placeholder="Nombre de la categoria">
-                    </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Descripcion</label>
-                        <input  type="text" class="form-control" placeholder="Descripcion">
-                    </div>
-                </div>   
-            </div>
+            <form [formGroup]="formularioCategoria">
+                <div class="modal-body">
+                    <div>
+                        <div class="form-group">
+                            <label for="Nombre">Nombre</label>
+                            <input formControlName="nombre" type="text"  class="form-control" placeholder="Nombre de la categoria" required>
+                        </div>
+                        <div class="form-group">   
+                            <label for="Descripcion">Descripcion</label>
+                            <input formControlName="descripcion" type="text" class="form-control" placeholder="Descripcion" required>
+                        </div>
+                    </div>   
+                </div>
+            </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button type="button"  data-dismiss="modal" class="btn btn-primary btn-sm">Guardar</button>
+                <button  type="button" (click)="guardarCategoria()" class="btn btn-primary">Guardar</button> <br>
             </div>
         </div>
     </div>

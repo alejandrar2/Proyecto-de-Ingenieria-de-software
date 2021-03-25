@@ -7,8 +7,9 @@ import { DashboardComponent } from './paginas/dashboard/dashboard.component';
 import { GaleriaComponent } from './paginas/galeria/galeria.component';
 import { ProductosComponent } from './paginas/productos/productos.component';
 import { UsuariosComponent } from './paginas/usuarios/usuarios.component';
-import { RegistroUsuariosComponent} from './registro-usuarios/registro-usuarios.component'
-
+import { RegistroUsuariosComponent } from './registro-usuarios/registro-usuarios.component'
+import {ClientesComponent } from './paginas/clientes/clientes.component';
+import { DenunciasComponent } from './paginas/denuncias/denuncias.component';
 
 const routes: Routes = [
   //{path: '', component: RegistroUsuariosComponent},
@@ -16,9 +17,11 @@ const routes: Routes = [
   {path: 'contrato', component:ContratoComponent},
   {path: 'dashboard', component:DashboardComponent, children:[
     
-    {
-      path: 'usuario', component:UsuariosComponent, 
-    }
+    {path: 'usuario', component:UsuariosComponent},
+    {path: 'clientes', component:ClientesComponent},
+    { path: 'categorias', component:CategoriasComponent},
+    { path: 'denuncias', component:DenunciasComponent}
+
 
   ]
   }, 

@@ -74,7 +74,7 @@ const deleteCategoria = async (req = request, res = response) => {
         }
     });
 
-    res.send({ mensaje: `Categoria eliminado con exito` });
+    res.send({ codigoResultado:1 ,mensaje: `Categoria eliminado con exito` });
 
 }
 
