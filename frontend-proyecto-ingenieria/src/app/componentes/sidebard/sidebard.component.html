@@ -4,17 +4,19 @@
       <a href="#" class="img logo rounded-circle mb-5" style="width: 162px; height: 126px; border-radius: 0px!important;"></a>
       <ul class="list-unstyled components mb-5">
         <li class="active">
-          <a href="#">Panel Administrativo</a>
-        </li>
-        
-        <li>
-          <a [routerLink]="['/dashboard/clientes']"  routerLinkActive="active" >Usuarios Registrados</a>
+          <a href="#">Dashboard</a>
         </li>
         <li>
-          <a [routerLink]="['/dashboard/categorias']"  routerLinkActive="active" >Categorias</a>
+          <a [routerLink]="['/dashboard']"  routerLinkActive="active" >Usuarios</a>
         </li>
         <li>
-          <a [routerLink]="['/dashboard/denuncias']"  routerLinkActive="active" >Denuncias</a>
+          <a [routerLink]="['/dashboard/clientes']"  routerLinkActive="active" >Clientes</a>
+        </li>
+        <li>
+          <a [routerLink]="['/dashboard/roles']"  routerLinkActive="active" >Categoria</a>
+        </li>
+        <li>
+          <a [routerLink]="['/dashboard/planes']"  routerLinkActive="active" >Denuncias</a>
         </li>
       </ul>
     </div>
