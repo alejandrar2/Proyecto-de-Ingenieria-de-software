@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoriaService } from 'src/app/servicios/categoria.service';
 
 @Component({
   selector: 'app-categorias',
@@ -34,6 +33,7 @@ export class CategoriasComponent implements OnInit {
       .subscribe((res: any)=>{
         console.log(res);
         this.categorias.push(res);
+        
       });
   }
 
@@ -44,6 +44,11 @@ export class CategoriasComponent implements OnInit {
         if (res.codigoResultado ==1){
             this.categorias.splice(res,1);
         }
+        
       });
   }  
+
+
+
+
 }

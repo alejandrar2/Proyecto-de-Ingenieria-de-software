@@ -18,16 +18,17 @@ export class ProductosComponent implements OnInit {
     descripcion: new FormControl('', [Validators.required]),
     estado: new FormControl('', [Validators.required]),
     precio: new FormControl('', [Validators.required]),
-    //categoriaId: new FormControl('', [Validators.required])
+    categoriumId: new FormControl('', [Validators.required])
   });
   constructor(private serviceProducto: ProductoService, private serviceCategoria: CategoriaService, private serviceImagen: SubirImagenService) { }
 
   categorias: any = [];
   urlImagen: string = '';
-
+  imagenSubida = false;
   ngOnInit(): void {
 
     this.obtenerProductos();
+    this.obtenerCategorias();
   
 
   }
@@ -60,6 +61,7 @@ export class ProductosComponent implements OnInit {
     this.serviceImagen.subirImagen(formData).subscribe((res: any) => {
       console.log(res);
       this.urlImagen = res.url;
+      this.imagenSubida = true;
     });;
 
 
@@ -83,6 +85,12 @@ export class ProductosComponent implements OnInit {
     });
 
 
+  }
+
+  obtenerCategorias(){
+    this.serviceCategoria.obtenerCategorias().subscribe((data:any)=>{
+      this.categorias = data;
+    });
   }
 
 

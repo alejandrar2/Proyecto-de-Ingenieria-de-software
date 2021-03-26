@@ -24,7 +24,8 @@ const createProducto = async (req = request, res = response) => {
         descripcion: req.body.data.descripcion,
         moneda: req.body.data.moneda,
         imagen: req.body.img,
-        estado: req.body.data.estado
+        estado: req.body.data.estado,
+        categoriumId: Number(req.body.data.categoriumId)
 
     });
     res.send(newProducto);
