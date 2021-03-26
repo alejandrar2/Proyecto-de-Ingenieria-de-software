@@ -18,7 +18,15 @@ const getProductos = async (req = request, res = response) => {
 //CREAR PRODUCTO
 const createProducto = async (req = request, res = response) => {
 
-    const newProducto = await Producto.create(req.body);
+    const newProducto = await Producto.create({
+        nombre: req.body.data.nombre,
+        precio: req.body.data.precio,
+        descripcion: req.body.data.descripcion,
+        moneda: req.body.data.moneda,
+        imagen: req.body.img,
+        estado: req.body.data.estado
+
+    });
     res.send(newProducto);
 
 }
