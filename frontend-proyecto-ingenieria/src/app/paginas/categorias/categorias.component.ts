@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriaService } from 'src/app/servicios/categoria.service';
 
@@ -8,47 +9,41 @@ import { CategoriaService } from 'src/app/servicios/categoria.service';
   styleUrls: ['./categorias.component.css']
 })
 export class CategoriasComponent implements OnInit {
-// validar campos (del modal)
-  categorias: any = [];
 
   formularioCategoria = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
-    descripcion: new FormControl('', [Validators.required]),
+    descripcion: new FormControl('', [Validators.required])
   });
 
-  constructor(private serviceCategoria: CategoriaService) { } // inyectar el servicio en el constructor
+  categorias: any = [];
+  backendHost: string = 'http://localhost:3500';
 
-  ngOnInit(): void {
+  constructor(private httpClient: HttpClient) { }
 
-    this.obtenerCategorias();
-
+  ngOnInit(){
+    this.httpClient.get(`${this.backendHost}/categoria`)
+      .subscribe(res => {
+        this.categorias = res;
+        console.log(this.categorias);
+      })
   }
 
-  obtenerCategorias() {
-    this.serviceCategoria.obtenerCategorias().subscribe((data: any) => {
-
-      console.log(data);
-      if (!data.mensaje) {
-        this.categorias = data
-      }
-
-    });
+  guardarCategoria(){
+    console.log('Formulario valido', this.formularioCategoria.valid);
+    this.httpClient.post(`${this.backendHost}/categoria`,this.formularioCategoria.value)
+      .subscribe((res: any)=>{
+        console.log(res);
+        this.categorias.push(res);
+      });
   }
 
-  obtenerCategoria() {
-    this.serviceCategoria.obtenerCategoria('1').subscribe((data: any) => {
-      console.log(data);
-    });
-  }
-
-  guardar() {
-    console.log(this.formularioCategoria.value);
-
-    this.serviceCategoria.guardarCategoria(this.formularioCategoria.value).subscribe((res: any) => {
-      console.log(res);
-      this.obtenerCategorias();
-    });
-
-  }
-
+  eliminarCategoria(i:any){
+    this.httpClient.delete(`${this.backendHost}/categoria/${i}`)
+      .subscribe((res: any)=>{
+        console.log(res);
+        if (res.codigoResultado ==1){
+            this.categorias.splice(res,1);
+        }
+      });
+  }  
 }
