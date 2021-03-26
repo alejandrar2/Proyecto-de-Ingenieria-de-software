@@ -25,12 +25,12 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of productos">
-            <th scope="row"></th>
+            <th scope="row"><img width="60px" height="50px" src="{{ item.urlImagen }}" alt=""></th>
             <td>{{item.nombre}}</td>
             <td>{{item.descripcion}}</td>
             <td>{{item.estado}}</td>
             <td>{{item.precio}}</td>
-            <td> <button  class="btn btn-danger btn-sm">Eliminar</button> </td>
+            <td> <button (click)="eliminarProducto(item.id)" class="btn btn-danger btn-sm">Eliminar</button> </td>
         </tr> 
     </tbody>
 </table>
@@ -75,8 +75,6 @@
                         </select>
                     </div>
                     <div>
-                       <!-- <input type="file" (change)="subirImagen($event)" name="archivo" class="d-none" #input>  
-                        <img (click)="input.click()" style="width: 90px; height: 63px; margin-left: 170px;" -->
                         <input type="file"  name="archivo" class="d-none" #input>
                         <img (click)="input.click()" style="width: 90px; height: 63px; margin-left: 170px;"
                             src="../../../assets/images/upload.png">
@@ -87,8 +85,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
                 <button type="button" (click)="guardar()"  [disabled]="!formularioProducto.valid" data-dismiss="modal" class="btn btn-primary btn-sm">Guardar</button>
-                <!--<button type="button" [disabled]="!imagenSubida" (click)="guardarProducto()" 
-                    class="btn btn-primary btn-sm" data-dismiss="modal">Guardar</button> -->
+            
             </div>
         </div>
     </div>

@@ -17,7 +17,7 @@ export class ProductosComponent implements OnInit {
     descripcion: new FormControl('', [Validators.required]),
     estado: new FormControl('', [Validators.required]),
     precio: new FormControl('', [Validators.required]),
-    categoriumId: new FormControl('', [Validators.required])
+    categoriaId: new FormControl('', [Validators.required])
   });
   constructor(private serviceProducto: ProductoService, private serviceCategoria: CategoriaService) { }
 
@@ -26,7 +26,7 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
 
     this.obtenerProductos();
-    this.obtenerCategorias();
+    
   }
 
   obtenerProductos() {
@@ -47,7 +47,6 @@ export class ProductosComponent implements OnInit {
   }
 
 
-
   guardar() {
     console.log(this.formularioProducto.value);
 
@@ -58,13 +57,13 @@ export class ProductosComponent implements OnInit {
     
 
   }
-
-  obtenerCategorias() {
-    this.serviceCategoria.obtenerCategorias().subscribe((data: any) => {
-      console.log(data);
-      this.categorias= data;
+  eliminarProducto(idProducto:any){
+    this.serviceProducto.eliminarProducto(idProducto).subscribe((res: any) =>{
+      console.log(res);
+      this.obtenerProductos();
     });
-
+   
+   
   }
 
 

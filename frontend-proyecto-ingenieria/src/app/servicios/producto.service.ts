@@ -24,7 +24,10 @@ export class ProductoService {
   }
 
 
+eliminarProducto(idProducto:any){
+  return this.http.delete(this.urlApi + idProducto)
 
+}
 
 
 
