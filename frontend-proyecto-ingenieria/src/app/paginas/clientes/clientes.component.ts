@@ -11,15 +11,14 @@ export class ClientesComponent implements OnInit {
   
   personas: any = [];
   backendHost: string = 'http://localhost:3500';
+  
   constructor( private httpClient: HttpClient) { }
   
   ngOnInit() {
     this.httpClient.get(`${this.backendHost}/user`)
-            .subscribe(res => { //esta funcion de tipo flecha se ejecuta cuando el servidor responde 
-                this.personas = res; //almacenamos las personas que estan almacenadas  en el servidor
-                //res trae un json con toda la informacion 
-                console.log(this.personas);
-
+            .subscribe(res => { 
+              this.personas = res;   
+              console.log(this.personas);
             });
   }
 

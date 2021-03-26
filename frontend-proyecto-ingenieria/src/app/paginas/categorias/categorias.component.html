@@ -17,15 +17,14 @@
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
-            <th scope="col">Eliminar</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of categorias" >
-            <th scope="row">1</th>
-            <td>{{ item.nombre }}</td>
-            <td>{{item.descripcion}}</td>
-            <td> <button class="btn btn-danger btn-sm" >Eliminar</button> </td>
+        <tr *ngFor="let categoria of categorias" >
+            <td scope="row">{{categoria.id}}</td>
+            <td>{{categoria.nombre}}</td>
+            <td>{{categoria.descripcion}}</td>
+            <td><button type="button" class="btn btn-danger" (click)="eliminarCategoria(categoria.id)">X</button></td>
         </tr>
     </tbody>
 </table>
@@ -57,11 +56,11 @@
                         </div>
                     </div>   
                 </div>
-            </form>    
+            </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button  type="button"  class="btn btn-primary">Guardar</button> <br>
-            </div>  
+                <button  type="button" (click)="guardarCategoria()" class="btn btn-primary">Guardar</button> <br>
+            </div>
         </div>
     </div>
 </div>
