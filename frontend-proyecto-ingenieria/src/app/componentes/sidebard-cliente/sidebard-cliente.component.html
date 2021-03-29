@@ -1,4 +1,4 @@
-<nav  style="background-color: #24303C ; height: 100%;" id="sidebar">
+<nav  style="height: 100%; background-image: url(../../../assets/images/Fondo2.jpg); " id="sidebar">
       
     <div  class="p-4 pt-5">
       <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(../../../assets/images/user.jpg); width: 162px; height: 163px; border-radius: 100px!important;"></a>
@@ -7,9 +7,13 @@
         
         </li>
         <li>
+          <a [routerLink]="['/dashboard-cliente/perfil']"  routerLinkActive="active" >Editar perfil</a>
+        </li>
+        <li>
           <a [routerLink]="['/dashboard-cliente/productos']"  routerLinkActive="active" >Productos</a>
         </li>
-       
+
+        
       </ul>
     </div>
   </nav>

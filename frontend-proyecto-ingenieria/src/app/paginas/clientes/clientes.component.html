@@ -11,15 +11,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let persona of personas;">
-       <td>{{persona.id}}</td>
+    <tr *ngFor="let persona of personas">
+      <td>{{persona.id}}</td>
       <td>{{persona.nombre}}</td>
       <td>{{persona.apellido}}</td>  
       <td>{{persona.direccion}}</td>
       <td>{{persona.genero}}</td>
       <td>{{persona.correo}}</td>
       <td>{{persona.telefono}}</td>
-      <td><button type="button" class="btn btn-danger" (click)="eliminar(persona.id)">X</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="eliminarPersona(persona.id)">X</button></td>
     </tr>
   </tbody>
 </table>

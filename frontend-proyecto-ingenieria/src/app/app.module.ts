@@ -20,8 +20,9 @@ import { DashboardClienteComponent } from './paginas/dashboard-cliente/dashboard
 import { ProductosComponent } from './paginas/productos/productos.component';
 import { CategoriasComponent } from './paginas/categorias/categorias.component';
 import { GaleriaComponent } from './paginas/galeria/galeria.component';
-
-
+import { CommonModule } from "@angular/common";
+import { PerfilComponent } from './paginas/perfil/perfil.component';
+import { ClientesComponent } from './paginas/clientes/clientes.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/inico', pathMatch: 'full'},
@@ -47,6 +48,8 @@ const routes: Routes = [
     ProductosComponent,
     CategoriasComponent,
     GaleriaComponent,
+    PerfilComponent,
+    ClientesComponent
     
     
   ],
@@ -57,7 +60,8 @@ const routes: Routes = [
     HttpClientModule,
     NgbModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   exports: [
     AppComponent    

@@ -10,11 +10,13 @@ import { UsuariosComponent } from './paginas/usuarios/usuarios.component';
 import { RegistroUsuariosComponent} from './registro-usuarios/registro-usuarios.component'
 import { ClientesComponent } from './paginas/clientes/clientes.component';
 import { DenunciasComponent } from './paginas/denuncias/denuncias.component';
+import { PerfilComponent } from './paginas/perfil/perfil.component';
 
 const routes: Routes = [
   //{path: '', component: RegistroUsuariosComponent},
   {path: 'registro', component: RegistroUsuariosComponent},
   {path: 'contrato', component:ContratoComponent},
+  {path: 'perfil', component:PerfilComponent},
   {path: 'dashboard', component:DashboardComponent, children:[
     
     {path: 'usuario', component:UsuariosComponent},
@@ -32,12 +34,13 @@ const routes: Routes = [
       },
 
       {
-        path: 'categorias', component: CategoriasComponent, 
+        path: 'perfil', component: PerfilComponent, 
       },
 
       {
         path: 'galeria', component: GaleriaComponent, 
       }
+      
     ] 
 
   }

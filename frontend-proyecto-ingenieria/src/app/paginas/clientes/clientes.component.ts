@@ -7,22 +7,23 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./clientes.component.css']
 })
 
+
 export class ClientesComponent implements OnInit {
   
   personas: any = [];
   backendHost: string = 'http://localhost:3500';
   
-  constructor( private httpClient: HttpClient) { }
+  constructor( private httpClient: HttpClient){ }
   
   ngOnInit() {
     this.httpClient.get(`${this.backendHost}/user`)
-            .subscribe(res => { 
+            .subscribe(res =>{ 
               this.personas = res;   
               console.log(this.personas);
             });
   }
 
-  eliminar (i:any){
+  eliminarPersona (i:any){
     console.log("eliminar el elemento " + i);
     this.httpClient.delete(`${this.backendHost}/user/${i}`)
       .subscribe((res:any) => {

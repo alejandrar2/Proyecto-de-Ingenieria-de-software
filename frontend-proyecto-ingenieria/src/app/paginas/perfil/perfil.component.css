@@ -1,0 +1,35 @@
+*{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+.ImagenBG{
+    background-image: url(../../../assets/images/Fondo2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    height: auto;
+}
+
+.Formulario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    backdrop-filter: blur(10px);
+    font-size: 20px;
+  }
+  
+  .form {
+    width: 700px;
+    background-color: rgba(255, 255, 255, 0.301);
+    border-radius: 5px;
+  }
+
+  .margen {
+    margin: 10px
+  }
