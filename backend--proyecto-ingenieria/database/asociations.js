@@ -34,11 +34,11 @@ Categoria.hasMany(Producto);
 
 //RELACION PERSONA A USER
 
-Persona.hasOne(User);
+User.belongsTo(Persona);
 
 //RELACION PERSONA A ADMINISTRADOR
 
-Persona.hasOne(Administrador);
+Administrador.belongsTo(Persona);
 
 //RELACION USUARIO A DENUNCIA
 
