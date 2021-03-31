@@ -3,58 +3,64 @@
         <div class="Formulario ">
             <form action="#" class="border p-4 form text-center ImagenBG">
                 <div class="form-group">
-                    <input (change)="subirImagen($event)" type="file"  name="archivo" class="d-none" #input>
+                    <input (change)="subirImagen($event)" type="file" name="archivo" class="d-none" #input>
                     <img (click)="input.click()" style="width: 195px; height: 150px; border-radius:14%"
-                            src="../../../assets/images/perfil.png">
-                            
+                        src="../../../assets/images/perfil.png">
+
                 </div>
-                    <form [formGroup]="formularioActualizar">
-                        <div class="row">        
-                                <div class="col-md-6 border-right">
-                                    <div   class="form-group">
-                                        <label for="validationCustom01" class="form-label" for="Nombre">Nombre</label>
-                                        <input [(ngModel)]="persona.nombre" formControlName="nombre" type="text" name="nombre" id="nombre" class="form-control" requiered>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Nombre">Apellido</label>
-                                        <input [(ngModel)]="persona.apellido" formControlName="apellido" type="text" name="apellido" id="apellido" class="form-control" requiered>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Telefono">Teléfono</label>
-                                        <input [(ngModel)]="persona.telefono" formControlName="telefono" type="number" name="telefono" id="telefono" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Telefono">Direccion</label>
-                                        <input [(ngModel)]="persona.direccion" formControlName="direccion" type="text" name="direccion" id="direccion" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">        
-                                        <!--Agregar la funcion de confirmar contraseña-->
-                                    
-                                    <div class="form-group">
-                                        <label for="password">Genero</label>
-                                        <select [(ngModel)]="persona.genero" formControlName="genero" class="form-group form-control">
-                                            <option selected>Elegir</option>
-                                            <option >Hombre</option>
-                                            <option >Mujer</option>
-                                        </select>                
-                                    </div>
-                                        
-                                    <div class="form-group">
-                                        <label for="password">Correo</label>
-                                        <input [(ngModel)]="persona.correo" formControlName="correo" type="email" name="correo" id="correo" class="form-control">
-                                    </div>
-                                    
-                                </div>
+                <form [formGroup]="formularioActualizar">
+                    <div class="row">
+                        <div class="col-md-6 border-right">
+                            <div class="form-group">
+                                <label for="validationCustom01" class="form-label" for="Nombre">Nombre</label>
+                                <input [(ngModel)]="persona.nombre" formControlName="nombre" type="text" name="nombre"
+                                    id="nombre" class="form-control" requiered>
+                            </div>
+                            <div class="form-group">
+                                <label for="Nombre">Apellido</label>
+                                <input [(ngModel)]="persona.apellido" formControlName="apellido" type="text"
+                                    name="apellido" id="apellido" class="form-control" requiered>
+                            </div>
+                            <div class="form-group">
+                                <label for="Telefono">Teléfono</label>
+                                <input [(ngModel)]="persona.telefono" formControlName="telefono" type="number"
+                                    name="telefono" id="telefono" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="Telefono">Direccion</label>
+                                <input [(ngModel)]="persona.direccion" formControlName="direccion" type="text"
+                                    name="direccion" id="direccion" class="form-control">
+                            </div>
                         </div>
-                        <div class="border-top mt-1">
+                        <div class="col-md-6">
+                            <!--Agregar la funcion de confirmar contraseña-->
+
+                            <div class="form-group">
+                                <label for="password">Genero</label>
+                                <select [(ngModel)]="persona.genero" formControlName="genero"
+                                    class="form-group form-control">
+                                    <option selected>Elegir</option>
+                                    <option>Hombre</option>
+                                    <option>Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Correo</label>
+                                <input [(ngModel)]="persona.correo" formControlName="correo" type="email" name="correo"
+                                    id="correo" class="form-control">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="border-top mt-1">
                         <p></p>
-                        </div>
-                    </form>
-                <button type="button" (click)="editar(2)" class="btn btn-primary margen">Editar</button>                     
-                <button [disabled]="!formularioActualizar.valid" type="button" (click)="actualizar(1)" class="btn btn-primary">Actualizar</button> <br>
+                    </div>
+                </form>
+                <button type="button" (click)="editar(2)" class="btn btn-primary margen">Editar</button>
+                <button [disabled]="!formularioActualizar.valid" type="button" (click)="actualizar(1)"
+                    class="btn btn-primary">Actualizar</button> <br>
             </form>
         </div>
     </div>
 </div>
-    

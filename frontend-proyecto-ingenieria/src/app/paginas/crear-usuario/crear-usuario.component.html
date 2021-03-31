@@ -1,0 +1,22 @@
+<div style="margin-right:8px ;" class="row">
+    <div style="background-image: url(../../../assets/images/2.jpeg);background-position: center center ; background-repeat: no-repeat ; background-size:cover; height: 657px;"
+        class=" col-8 md-4 sm-2">
+    </div>
+    <form [formGroup]="formularioRegistro" style="background-color: #24303C;" class="col-4 md-2 ">
+        <div style="margin-top: 0px;" class="form-register">
+            <img style="width: 229px; height: 123px; padding-left: 64px;" src="">
+            <h6>Registrarse</h6>
+            <input formControlName="nombre" class="controls" type="text" placeholder="Ingrese su Nombre">
+            <input formControlName= "apellido" fom class="controls" type="text" name="apellido" placeholder="Ingrese su Apellido">
+            <input formControlName= "genero" class="controls" type="text" name="Genero" placeholder="Genero">
+            <input formControlName= "telefono" class="controls" type="text" name="Telefono" placeholder="Telefono">
+            <input formControlName= "correo" class="controls" type="email" name="correo" placeholder="Ingrese su Correo">
+            <input formControlName= "password" class="controls" type="password" name="contrasenia" placeholder="Ingrese su Contraseña">
+            <label>
+                <input type="checkbox" value="remember-me"> De acuerdo con los terminos y condiciones
+            </label>
+            <button style="width: 47%; margin-left: 92px;" class="botons btn btn-sm btn-block" type="button"
+                (click)="crearUsuario()">Registrarse</button>
+            <p><a href="#">¿Ya tengo Cuenta?</a></p>
+        </div>
+    </form>

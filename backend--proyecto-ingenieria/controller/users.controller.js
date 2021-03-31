@@ -9,7 +9,7 @@ const Persona = require('../models/persona');
 const getUsers = async (req = request, res = response) => {
 
     const users = await User.findAll({
-        include : [{
+        include: [{
             model: Persona
         }]
     });
@@ -28,9 +28,9 @@ const getUsers = async (req = request, res = response) => {
 const createUser = async (req = request, res = response) => {
 
     let newPersona = await Persona.create({
-        nombre : req.body.nombre,
-        apellido : req.body.apellido,
-        telefono : req.body.telefono,
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        telefono: req.body.telefono,
         direccion: req.body.direccion,
         genero: req.body.genero
 
@@ -42,10 +42,10 @@ const createUser = async (req = request, res = response) => {
         password: req.body.password,
         personaId: newPersona.id
 
-    } )
-   
+    })
 
-    res.send({newUser, newPersona});
+
+    res.send({ newUser, newPersona });
 
 }
 
@@ -56,7 +56,7 @@ const getUser = async (req = request, res = response) => {
         where: {
             id: req.params.id
         },
-        include : [{
+        include: [{
             model: Persona
         }]
     });
@@ -122,6 +122,27 @@ const deleteUser = async (req = request, res = response) => {
     res.send({ codigoResultado: 1, mensaje: `Usuario eliminado con exito` });
 
 }
+//LOGIN USUARIO
+
+const login = async (req = request, res = response) => {
+
+    const user = await User.findOne({
+        where: {
+            correo: req.body.correo,
+            password: req.body.password
+        }
+    });
+
+    if (!user) {
+        return res.send({ mensaje: `Usuario no existe`, ok: false });
+    } else {
+        return res.send({ user: user.id, ok: true });
+    }
+}
+
+
+
+
 
 
 
@@ -132,5 +153,6 @@ module.exports = {
     getUser,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    login
 }

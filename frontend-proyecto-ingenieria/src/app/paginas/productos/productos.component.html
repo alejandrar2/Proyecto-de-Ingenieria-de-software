@@ -31,7 +31,7 @@
             <td>{{item.estado}}</td>
             <td>{{item.precio}}</td>
             <td> <button (click)="eliminarProducto(item.id)" class="btn btn-danger btn-sm">Eliminar</button> </td>
-        </tr> 
+        </tr>
     </tbody>
 </table>
 
@@ -50,16 +50,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form [formGroup]= "formularioProducto">
+                <form [formGroup]="formularioProducto">
                     <div class="form-group">
                         <label for="formGroupExampleInput">Nombre del producto</label>
-                        <input formControlName="nombre" type="text"  class="form-control" placeholder="Nombre del producto">
+                        <input formControlName="nombre" type="text" class="form-control"
+                            placeholder="Nombre del producto">
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Descripcion</label>
-                        <input formControlName="descripcion"type="text"   class="form-control" placeholder="Descripcion">
+                        <input formControlName="descripcion" type="text" class="form-control" placeholder="Descripcion">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="formGroupExampleInput">Estado</label>
                         <input formControlName="estado" type="text" class="form-control" placeholder="Estado">
@@ -71,11 +72,11 @@
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Categoria</label>
                         <select formControlName="categoriumId" class="form-control" placeholder="Categoria">
-                            <option value="{{ item.id }}" *ngFor="let item of categorias" > {{ item.nombre }}  </option>
+                            <option value="{{ item.id }}" *ngFor="let item of categorias"> {{ item.nombre }} </option>
                         </select>
                     </div>
                     <div>
-                        <input (change)="subirImagen($event)" type="file"  name="archivo" class="d-none" #input>
+                        <input (change)="subirImagen($event)" type="file" name="archivo" class="d-none" #input>
                         <img (click)="input.click()" style="width: 90px; height: 63px; margin-left: 170px;"
                             src="../../../assets/images/upload.png">
                     </div>
@@ -84,8 +85,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
-                <button type="button" (click)="guardar()"  [disabled]="!formularioProducto.valid || !imagenSubida" data-dismiss="modal" class="btn btn-primary btn-sm">Guardar</button>
-            
+                <button type="button" (click)="guardar()" [disabled]="!formularioProducto.valid || !imagenSubida"
+                    data-dismiss="modal" class="btn btn-primary btn-sm">Guardar</button>
+
             </div>
         </div>
     </div>

@@ -23,12 +23,15 @@ import { GaleriaComponent } from './paginas/galeria/galeria.component';
 import { CommonModule } from "@angular/common";
 import { PerfilComponent } from './paginas/perfil/perfil.component';
 import { ClientesComponent } from './paginas/clientes/clientes.component';
+import { CrearUsuarioComponent } from './paginas/crear-usuario/crear-usuario.component';
+import { LoginUsuarioComponent } from './paginas/login-usuario/login-usuario.component';
+
 
 const routes: Routes = [
   {path:'',redirectTo:'/inico', pathMatch: 'full'},
   {path: 'inicio',component: InicioComponent},
   {path: 'contrato',component: ContratoComponent},
-  {path: 'registro', component: RegistroUsuariosComponent}
+  {path: 'registro', component: RegistroUsuariosComponent},
   
 ];
 
@@ -49,9 +52,9 @@ const routes: Routes = [
     CategoriasComponent,
     GaleriaComponent,
     PerfilComponent,
-    ClientesComponent
-    
-    
+    ClientesComponent,
+    CrearUsuarioComponent,
+    LoginUsuarioComponent
   ],
   imports: [
     BrowserModule,
