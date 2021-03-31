@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoriaService } from 'src/app/servicios/categoria.service';
 import { ProductoService } from 'src/app/servicios/producto.service';
 import { SubirImagenService } from 'src/app/servicios/subir-imagen.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-productos',
@@ -20,11 +21,14 @@ export class ProductosComponent implements OnInit {
     precio: new FormControl('', [Validators.required]),
     categoriumId: new FormControl('', [Validators.required])
   });
-  constructor(private serviceProducto: ProductoService, private serviceCategoria: CategoriaService, private serviceImagen: SubirImagenService) { }
+  constructor(private serviceProducto: ProductoService, private serviceCategoria: CategoriaService, private serviceImagen: SubirImagenService, private httpClient: HttpClient) { }
 
   categorias: any = [];
   urlImagen: string = '';
   imagenSubida = false;
+  backendHost: string = 'http://localhost:3500';
+  producto: any = [];
+
   ngOnInit(): void {
 
     this.obtenerProductos();
@@ -44,11 +48,11 @@ export class ProductosComponent implements OnInit {
     });
   }
 
-  obtenerProducto() {
-    this.serviceProducto.obtenerProducto('1').subscribe((data: any) => {
-      console.log(data);
-    });
-  }
+  // obtenerProducto() {
+  //   this.serviceProducto.obtenerProducto('1').subscribe((data: any) => {
+  //     console.log(data);
+  //   });
+  // }
 
   subirImagen(e: any) {
     let file = e.target.files[0];
@@ -93,5 +97,13 @@ export class ProductosComponent implements OnInit {
     });
   }
 
+  editarProducto(idProducto: any){
+    console.log("Id producto es: "+ idProducto)
+    this.httpClient.get(`${this.backendHost}/producto/${idProducto}`)
+            .subscribe(res => { 
+              this.producto = res;   
+              console.log(this.producto);
+            });
+  }
 
 }

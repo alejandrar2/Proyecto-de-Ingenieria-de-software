@@ -27,25 +27,30 @@ const getUsers = async (req = request, res = response) => {
 //CREAR USUARIOS
 const createUser = async (req = request, res = response) => {
 
-    let newPersona = await Persona.create({
+    // let newPersona = await Persona.create({
+    //     nombre: req.body.nombre,
+    //     apellido: req.body.apellido,
+    //     telefono: req.body.telefono,
+    //     direccion: req.body.direccion,
+    //     genero: req.body.genero
+
+    // });
+
+
+    let newUser = await User.create({
         nombre: req.body.nombre,
         apellido: req.body.apellido,
         telefono: req.body.telefono,
         direccion: req.body.direccion,
-        genero: req.body.genero
-
-    });
-
-
-    let newUser = await User.create({
+        genero: req.body.genero,
         correo: req.body.correo,
         password: req.body.password,
-        personaId: newPersona.id
+        // personaId: newPersona.id
 
     })
 
-
-    res.send({ newUser, newPersona });
+    res.send({ newUser });
+    // res.send({ newUser, newPersona });
 
 }
 
@@ -79,29 +84,40 @@ const updateUser = async (req = request, res = response) => {
     }
 
     await user.update({
-        correo: req.body.correo,
-        password: req.body.password
-    });
-
-    let persona = await Persona.findByPk(user.personaId);
-
-    if (!persona) {
-
-        return res.send({ mensaje: `Usuario no existe` });
-    }
-
-    await persona.update({
-
         nombre: req.body.nombre,
         apellido: req.body.apellido,
         telefono: req.body.telefono,
         direccion: req.body.direccion,
-        genero: req.body.genero,
-    })
+        genero: req.body.genero, 
+        correo: req.body.correo,
+        password: req.body.password
+    });
+
 
     return res.send({ mensaje: `Usuario actualzado` });
 
     res.send(user);
+
+
+    // let persona = await Persona.findByPk(user.personaId);
+
+    // if (!persona) {
+
+    //     return res.send({ mensaje: `Usuario no existe` });
+    // }
+
+    // await persona.update({
+
+    //     nombre: req.body.nombre,
+    //     apellido: req.body.apellido,
+    //     telefono: req.body.telefono,
+    //     direccion: req.body.direccion,
+    //     genero: req.body.genero,
+    // })
+
+    // return res.send({ mensaje: `Usuario actualzado` });
+
+    // res.send(user);
 
 }
 

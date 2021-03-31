@@ -19,7 +19,8 @@ export class CrearUsuarioComponent implements OnInit {
     apellido: new FormControl('', [Validators.required]),
     genero: new FormControl('', [Validators.required]),
     telefono: new FormControl('', [Validators.required]),
-    correo: new FormControl('', [Validators.required]),
+    direccion: new FormControl('', [Validators.required]),
+    correo: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required])
   });
 
@@ -32,7 +33,7 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   crearUsuario() {
-    console.log(this.formularioRegistro.value)
+    console.log(this.formularioRegistro.valid)
 
     this.serviceUsuario.añadirUsuario(this.formularioRegistro.value).subscribe((data: any) => {
       console.log(data);

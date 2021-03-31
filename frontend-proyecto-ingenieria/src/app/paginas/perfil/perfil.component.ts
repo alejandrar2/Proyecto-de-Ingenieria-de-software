@@ -10,14 +10,14 @@ import { SubirImagenService } from 'src/app/servicios/subir-imagen.service';
 })
 export class PerfilComponent implements OnInit {
 
-  formularioActualizar = new FormGroup({
-    nombre: new FormControl('', [Validators.required]),
-    apellido: new FormControl('', [Validators.required]),
-    telefono: new FormControl('', [Validators.required]),
-    direccion: new FormControl('', [Validators.required]),
-    genero: new FormControl('', [Validators.required]),
-    correo: new FormControl('', [Validators.required, Validators.email])
-});
+//   formularioActualizar = new FormGroup({
+//     nombre: new FormControl('', [Validators.required]),
+//     apellido: new FormControl('', [Validators.required]),
+//     telefono: new FormControl('', [Validators.required]),
+//     direccion: new FormControl('', [Validators.required]),
+//     genero: new FormControl('', [Validators.required]),
+//     correo: new FormControl('', [Validators.required, Validators.email])
+// });
   
   urlImagen: string = '';
   imagenSubida = false;
@@ -54,7 +54,7 @@ export class PerfilComponent implements OnInit {
   }
 
   actualizar(i:any) {
-    this.httpClient.put(`${this.backendHost}/user/${i}`, this.formularioActualizar)
+    this.httpClient.put(`${this.backendHost}/user/${i}`, this.persona)
       .subscribe((res: any) => {
         console.log(res);
       })
@@ -67,4 +67,5 @@ export class PerfilComponent implements OnInit {
               console.log(this.persona);
             });
   }
+
 }

@@ -16,21 +16,23 @@
     <thead class="thead-light">
         <tr>
             <th scope="col"></th>
+            <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Estado</th>
             <th scope="col">Precio</th>
-            <th scope="col">Eliminar</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of productos">
             <th scope="row"><img width="60px" height="50px" src="{{ item.imagen}}" alt=""></th>
+            <td>{{item.id}}</td>
             <td>{{item.nombre}}</td>
             <td>{{item.descripcion}}</td>
             <td>{{item.estado}}</td>
             <td>{{item.precio}}</td>
             <td> <button (click)="eliminarProducto(item.id)" class="btn btn-danger btn-sm">Eliminar</button> </td>
+            <td><button type="button" (click)="editarProducto(item.id)" class="btn btn-primary margen">Editar</button></td>
         </tr>
     </tbody>
 </table>
@@ -62,9 +64,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="formGroupExampleInput">Estado</label>
-                        <input formControlName="estado" type="text" class="form-control" placeholder="Estado">
-                    </div>
+                                <label for="password">Estado</label>
+                                <select formControlName="estado" class="form-group form-control">
+                                    <option selected>Elegir</option>
+                                    <option>Nuevo</option>
+                                    <option>Usado</option>
+                                </select>
+                            </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Precio</label>
                         <input formControlName="precio" type="text" class="form-control" placeholder="Precio">
