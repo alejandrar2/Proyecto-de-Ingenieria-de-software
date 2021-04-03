@@ -4,31 +4,31 @@
             <form action="#" class="border p-4 form text-center ImagenBG">
                 <div class="form-group">
                     <input (change)="subirImagen($event)" type="file" name="archivo" class="d-none" #input>
-                    <img (click)="input.click()" style="width: 195px; height: 150px; border-radius:14%"
+                    <img (click)="input.click()" style="width: 292px; height: 150px; border-radius:14%"
                         src="../../../assets/images/perfil.png">
 
                 </div>
-                <form [formGroup]="formularioActualizar">
+                <form>
                     <div class="row">
                         <div class="col-md-6 border-right">
                             <div class="form-group">
                                 <label for="validationCustom01" class="form-label" for="Nombre">Nombre</label>
-                                <input [(ngModel)]="persona.nombre" formControlName="nombre" type="text" name="nombre"
+                                <input [(ngModel)]="persona.nombre" type="text" name="nombre"
                                     id="nombre" class="form-control" requiered>
                             </div>
                             <div class="form-group">
                                 <label for="Nombre">Apellido</label>
-                                <input [(ngModel)]="persona.apellido" formControlName="apellido" type="text"
+                                <input [(ngModel)]="persona.apellido" type="text"
                                     name="apellido" id="apellido" class="form-control" requiered>
                             </div>
                             <div class="form-group">
                                 <label for="Telefono">Teléfono</label>
-                                <input [(ngModel)]="persona.telefono" formControlName="telefono" type="number"
+                                <input [(ngModel)]="persona.telefono" type="number"
                                     name="telefono" id="telefono" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="Telefono">Direccion</label>
-                                <input [(ngModel)]="persona.direccion" formControlName="direccion" type="text"
+                                <input [(ngModel)]="persona.direccion" type="text"
                                     name="direccion" id="direccion" class="form-control">
                             </div>
                         </div>
@@ -37,7 +37,7 @@
 
                             <div class="form-group">
                                 <label for="password">Genero</label>
-                                <select [(ngModel)]="persona.genero" formControlName="genero"
+                                <select [(ngModel)]="persona.genero" 
                                     class="form-group form-control">
                                     <option selected>Elegir</option>
                                     <option>Hombre</option>
@@ -47,7 +47,7 @@
 
                             <div class="form-group">
                                 <label for="password">Correo</label>
-                                <input [(ngModel)]="persona.correo" formControlName="correo" type="email" name="correo"
+                                <input [(ngModel)]="persona.correo" type="email" name="correo"
                                     id="correo" class="form-control">
                             </div>
 
@@ -56,10 +56,11 @@
                     <div class="border-top mt-1">
                         <p></p>
                     </div>
-                </form>
-                <button type="button" (click)="editar(2)" class="btn btn-primary margen">Editar</button>
-                <button [disabled]="!formularioActualizar.valid" type="button" (click)="actualizar(1)"
+
+                <button type="button" (click)="editar(1)" class="btn btn-primary margen">Editar</button>
+                <button  type="reset" (click)="actualizar(1)"
                     class="btn btn-primary">Actualizar</button> <br>
+                </form>
             </form>
         </div>
     </div>

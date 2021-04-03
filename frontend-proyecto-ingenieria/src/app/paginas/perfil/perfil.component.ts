@@ -71,4 +71,5 @@ export class PerfilComponent implements OnInit {
         console.log(this.persona);
       });
   }
+
 }

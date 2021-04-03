@@ -33,4 +33,9 @@ export class LoginUsuarioComponent implements OnInit {
       }
     });
   }
+
+  obtenerLocalStorage(){
+    var idUsuario:any = localStorage.getItem("user");
+  }
+
 }
