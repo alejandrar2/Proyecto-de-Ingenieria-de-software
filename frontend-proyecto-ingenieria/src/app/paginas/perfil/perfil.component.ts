@@ -17,23 +17,27 @@ export class PerfilComponent implements OnInit {
     direccion: new FormControl('', [Validators.required]),
     genero: new FormControl('', [Validators.required]),
     correo: new FormControl('', [Validators.required, Validators.email])
-});
-  
+  });
+
   urlImagen: string = '';
   imagenSubida = false;
   backendHost: string = 'http://localhost:3500';
   personas: any = [];
   persona: any = [];
-  
-  constructor(private httpClient: HttpClient,private serviceImagen: SubirImagenService) { }
-  i: any = 1;
- 
+
+  constructor(private httpClient: HttpClient, private serviceImagen: SubirImagenService) { }
+
+  idUsuario: String = '';
+
   ngOnInit(): void {
-     this.httpClient.get(`${this.backendHost}/user`)
-             .subscribe(res => { 
-               this.personas = res;   
-               console.log(this.personas);
-             });
+    this.httpClient.get(`${this.backendHost}/user`)
+      .subscribe(res => {
+        this.personas = res;
+        console.log(this.personas);
+      });
+
+    this.idUsuario = JSON.parse(window.localStorage.getItem('user') || '');
+
   }
 
   subirImagen(e: any) {
@@ -53,18 +57,18 @@ export class PerfilComponent implements OnInit {
 
   }
 
-  actualizar(i:any) {
-    this.httpClient.put(`${this.backendHost}/user/${i}`, this.formularioActualizar)
+  actualizar(i: any) {
+    this.httpClient.put(`${this.backendHost}/user/${this.idUsuario}`, this.formularioActualizar)
       .subscribe((res: any) => {
         console.log(res);
       })
   }
 
-  editar(i:any){
+  editar(i: any) {
     this.httpClient.get(`${this.backendHost}/user/${i}`)
-            .subscribe(res => { 
-              this.persona = res;   
-              console.log(this.persona);
-            });
+      .subscribe(res => {
+        this.persona = res;
+        console.log(this.persona);
+      });
   }
 }

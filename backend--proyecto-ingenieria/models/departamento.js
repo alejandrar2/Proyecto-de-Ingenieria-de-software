@@ -6,8 +6,7 @@ class Departamento extends Model { }
 
 Departamento.init({
     
-    nombre: DataTypes.STRING,
-    pais:DataTypes.STRING
+    nombre: DataTypes.STRING
     
 },
     {
