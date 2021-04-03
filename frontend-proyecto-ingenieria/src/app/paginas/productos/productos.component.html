@@ -1,0 +1,100 @@
+<h3>Productos</h3>
+<button style="margin-bottom: 15px;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+    data-target="#exampleModal">
+    Agregar
+</button>
+
+<!--<div *ngIf="mensaje"  class="alert alert-{{ alert }} alert-dismissible fade show" role="alert">
+    <strong>{{ mensaje }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div> -->
+
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of productos">
+            <th scope="row"><img width="60px" height="50px" src="{{ item.imagen}}" alt=""></th>
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.estado}}</td>
+            <td>{{item.precio}}</td>
+            <td> <button (click)="eliminarProducto(item.id)" class="btn btn-danger btn-sm">Eliminar</button> </td>
+            <td><button type="button" (click)="editarProducto(item.id)" class="btn btn-primary margen">Editar</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formularioProducto">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Nombre del producto</label>
+                        <input formControlName="nombre" type="text" class="form-control"
+                            placeholder="Nombre del producto">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Descripcion</label>
+                        <input formControlName="descripcion" type="text" class="form-control" placeholder="Descripcion">
+                    </div>
+
+                    <div class="form-group">
+                                <label for="password">Estado</label>
+                                <select formControlName="estado" class="form-group form-control">
+                                    <option selected>Elegir</option>
+                                    <option>Nuevo</option>
+                                    <option>Usado</option>
+                                </select>
+                            </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Precio</label>
+                        <input formControlName="precio" type="text" class="form-control" placeholder="Precio">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Categoria</label>
+                        <select formControlName="categoriumId" class="form-control" placeholder="Categoria">
+                            <option value="{{ item.id }}" *ngFor="let item of categorias"> {{ item.nombre }} </option>
+                        </select>
+                    </div>
+                    <div>
+                        <input (change)="subirImagen($event)" type="file" name="archivo" class="d-none" #input>
+                        <img (click)="input.click()" style="width: 90px; height: 63px; margin-left: 170px;"
+                            src="../../../assets/images/upload.png">
+                    </div>
+                    <div style="margin-left: 170px">subir imagen</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                <button type="button" (click)="guardar()" [disabled]="!formularioProducto.valid || !imagenSubida"
+                    data-dismiss="modal" class="btn btn-primary btn-sm">Guardar</button>
+
+            </div>
+        </div>
+    </div>
+</div>

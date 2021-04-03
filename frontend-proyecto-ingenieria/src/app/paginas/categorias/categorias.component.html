@@ -1,0 +1,66 @@
+<h3>Categorias</h3>
+<button style="margin-bottom: 15px;" type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+    data-target="#exampleModal">
+    Agregar
+</button>
+<!--<div *ngIf="mensaje"  class="alert alert-{{ alert }} alert-dismissible fade show" role="alert">
+    <strong>{{ mensaje }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div> -->
+
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let categoria of categorias" >
+            <td scope="row">{{categoria.id}}</td>
+            <td>{{categoria.nombre}}</td>
+            <td>{{categoria.descripcion}}</td>
+            <td><button type="button" class="btn btn-danger" (click)="eliminarCategoria(categoria.id)">X</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form [formGroup]="formularioCategoria">
+                <div class="modal-body">
+                    <div>
+                        <div class="form-group">
+                            <label for="Nombre">Nombre</label>
+                            <input formControlName="nombre" type="text"  class="form-control" placeholder="Nombre de la categoria" required>
+                        </div>
+                        <div class="form-group">   
+                            <label for="Descripcion">Descripcion</label>
+                            <input formControlName="descripcion" type="text" class="form-control" placeholder="Descripcion" required>
+                        </div>
+                    </div>   
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                <button  type="button" (click)="guardarCategoria()" data-dismiss="modal" class="btn btn-primary">Guardar</button> <br>
+            </div>
+        </div>
+    </div>
+</div>

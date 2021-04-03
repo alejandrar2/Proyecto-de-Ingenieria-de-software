@@ -1,0 +1,34 @@
+<div style="margin-right:8px ;" class="row morgan">
+    <div
+      style="background-image: url(../../../assets/images/4.jpeg);background-position: center center ; background-repeat: no-repeat ; background-size:cover; height: 657px;"
+      class=" col-8 md-4 sm-2">
+  
+    </div>
+    <div style="padding-top: 10px;" class="col-4 md-2 ">
+  
+      <form [formGroup]="formularioLogin" class="login-box">
+        <img style="width: 296px; height: 231px; border-radius: 50px;" src="">
+        <div class="textbox">
+          <i class="fas fa-user"></i>
+          <input formControlName="correo" type="text" placeholder="Username">
+        </div>
+  
+        <div class="textbox">
+          <i class="fas fa-lock"></i>
+          <input formControlName="password" type="password" placeholder="Password">
+        </div>
+        <div style="color: #2ecece;" class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+  
+        <button  (click) = "login()" style=" width: 60%; margin-left: 69px;" type="button" class="btn" >Iniciar</button>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </form>
+    </div>
+  
+  
+  </div>

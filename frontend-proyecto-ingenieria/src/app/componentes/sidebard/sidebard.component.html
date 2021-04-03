@@ -1,0 +1,21 @@
+<nav  style="height: 100%; background-image: url(../../../assets/images/Fondo2.jpg);" id="sidebar">
+      
+    <div  class="p-4 pt-5">
+      <a href="#" class="img logo rounded-circle mb-5" style="width: 162px; height: 126px; border-radius: 0px!important;"></a>
+      <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a href="#">Panel Administrativo</a>
+        </li>
+       
+        <li>
+          <a [routerLink]="['/dashboard/clientes']"  routerLinkActive="active" >Usuiarios Registrados</a>
+        </li>
+        <li>
+          <a [routerLink]="['/dashboard/categorias']"  routerLinkActive="active" >Categoria</a>
+        </li>
+        <li>
+          <a [routerLink]="['/dashboard/denuncias']"  routerLinkActive="active" >Denuncias</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

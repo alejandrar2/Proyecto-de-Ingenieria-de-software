@@ -1,0 +1,73 @@
+<div class="ImagenBG">
+    <div class="container">
+        <div class="Formulario">
+            <form action="#" class="border p-4 form text-center">
+                <div class="form-group">
+                    <h1>Registro</h1>
+                </div>
+                <form [formGroup]="formularioRegistro">
+                    <div class="row">
+                        <div class="col-md-6 border-right">
+                            <div class="form-group">
+                                <label for="validationCustom01" class="form-label" for="Nombre">Nombre</label>
+                                <input formControlName="nombre" type="text" name="nombre" id="nombre"
+                                    class="form-control" requiered>
+                            </div>
+                            <div class="form-group">
+                                <label for="Nombre">Apellido</label>
+                                <input formControlName="apellido" type="text" name="apellido" id="apellido"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="Telefono">Teléfono</label>
+                                <input formControlName="telefono" type="number" name="telefono" id="telefono"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="Telefono">Direccion</label>
+                                <input formControlName="direccion" type="text" name="direccion" id="direccion"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!--Agregar la funcion de confirmar contraseña-->
+
+                            <div class="form-group">
+                                <label for="password">Genero</label>
+                                <select formControlName="genero" class="form-group form-control">
+                                    <option selected>Elegir</option>
+                                    <option>Hombre</option>
+                                    <option>Mujer</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Correo</label>
+                                <input formControlName="correo" type="email" name="correo" id="correo"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Contraseña</label>
+                                <input formControlName="password" type="password" name="password" id="password"
+                                    class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-top mt-1">
+                        <p></p>
+                    </div>
+                    <div class="form-group">
+                        <p>
+                            <input formControlName="contrato" type="checkbox" disable data-toggle="toggle">
+                            <a href="/frontend-proyecto-ingenieria/src/app/contrato/contrato.component.html" style="color: rgb(10, 57, 212);"> <i> Aceptar Terminos y condiciones de
+                                    Uso </i></a>
+                        </p>
+                    </div>
+                </form>
+
+                <button [disabled]="!formularioRegistro.valid" type="button" (click)="guardar()"
+                    class="btn btn-primary">Guardar</button> <br>
+            </form>
+        </div>
+    </div>
+</div>
