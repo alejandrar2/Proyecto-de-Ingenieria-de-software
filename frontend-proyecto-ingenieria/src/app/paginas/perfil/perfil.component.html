@@ -1,35 +1,35 @@
 <div>
     <div class="container ">
         <div class="Formulario ">
-            <form action="#" class="border p-4 form text-center ImagenBG">
+            <div action="#" class="border p-4 form text-center ImagenBG">
                 <div class="form-group">
                     <input (change)="subirImagen($event)" type="file" name="archivo" class="d-none" #input>
                     <img (click)="input.click()" style="width: 292px; height: 150px; border-radius:14%"
                         src="../../../assets/images/perfil.png">
 
                 </div>
-                <form>
+                <div>
                     <div class="row">
                         <div class="col-md-6 border-right">
                             <div class="form-group">
                                 <label for="validationCustom01" class="form-label" for="Nombre">Nombre</label>
-                                <input [(ngModel)]="persona.nombre" type="text" name="nombre"
-                                    id="nombre" class="form-control" requiered>
+                                <input [(ngModel)]="persona.nombre" type="text" 
+                                    class="form-control" requiered>
                             </div>
                             <div class="form-group">
                                 <label for="Nombre">Apellido</label>
                                 <input [(ngModel)]="persona.apellido" type="text"
-                                    name="apellido" id="apellido" class="form-control" requiered>
+                                    class="form-control" requiered>
                             </div>
                             <div class="form-group">
                                 <label for="Telefono">Teléfono</label>
-                                <input [(ngModel)]="persona.telefono" type="number"
-                                    name="telefono" id="telefono" class="form-control">
+                                <input [(ngModel)]="persona.telefono" type="number" 
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="Telefono">Direccion</label>
-                                <input [(ngModel)]="persona.direccion" type="text"
-                                    name="direccion" id="direccion" class="form-control">
+                                <input [(ngModel)]="persona.direccion" type="text" 
+                                    class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -37,18 +37,17 @@
 
                             <div class="form-group">
                                 <label for="password">Genero</label>
-                                <select [(ngModel)]="persona.genero" 
-                                    class="form-group form-control">
-                                    <option selected>Elegir</option>
-                                    <option>Hombre</option>
-                                    <option>Mujer</option>
+                                <select [(ngModel)]="persona.genero" class="form-group form-control">
+                                    <option >Elegir</option>
+                                    <option value="M" >Hombre</option>
+                                    <option value="F" >Mujer</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="password">Correo</label>
-                                <input [(ngModel)]="persona.correo" type="email" name="correo"
-                                    id="correo" class="form-control">
+                                <input [(ngModel)]="persona.correo" type="email" 
+                                    class="form-control">
                             </div>
 
                         </div>
@@ -57,11 +56,10 @@
                         <p></p>
                     </div>
 
-                <button type="button" (click)="editar(1)" class="btn btn-primary margen">Editar</button>
-                <button  type="reset" (click)="actualizar(1)"
-                    class="btn btn-primary">Actualizar</button> <br>
-                </form>
-            </form>
+                    <button type="button" class="btn btn-primary margen">Editar</button>
+                    <button type="reset" (click)="actualizar()" class="btn btn-primary">Actualizar</button> <br>
+                </div>
+            </div>
         </div>
     </div>
 </div>

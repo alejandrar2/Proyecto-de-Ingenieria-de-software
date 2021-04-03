@@ -24,5 +24,5 @@ app.listen(3500, () => {
 
     sequelize.sync(force =true).then(con => console.log('Conectado'));
 
-    console.log(`Server on port http://localhost:3500`)
+    console.log(`Server on port http://localhost:3500/`)
 });

@@ -1,25 +1,28 @@
 const { response, request } = require('express');
 const Producto = require('../models/producto');
-const User = require('../models/user');
-const Persona = require('../models/persona');
+const Users = require('../models/user');
+const Personas = require('../models/persona');
 
 
 
 // OBTENER USUARIOS
 const getUsers = async (req = request, res = response) => {
 
-    const users = await User.findAll({
-        include: [{
-            model: Persona
-        }]
+    const usersList = await Users.findAll({
+        include: [
+            {
+                model: Personas,
+            },
+
+        ]
     });
 
 
-    if (users.length == 0) {
+    if (usersList.length == 0) {
         return res.send({ mensaje: 'No hay data' });
     }
 
-    res.send(users);
+    res.send(usersList);
 
 
 }
@@ -27,14 +30,14 @@ const getUsers = async (req = request, res = response) => {
 //CREAR USUARIOS
 const createUser = async (req = request, res = response) => {
 
-    // let newPersona = await Persona.create({
-    //     nombre: req.body.nombre,
-    //     apellido: req.body.apellido,
-    //     telefono: req.body.telefono,
-    //     direccion: req.body.direccion,
-    //     genero: req.body.genero
+    let newPersona = await Persona.create({
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        telefono: req.body.telefono,
+        direccion: req.body.direccion,
+        genero: req.body.genero
 
-    // });
+    });
 
 
     let newUser = await User.create({
@@ -45,24 +48,24 @@ const createUser = async (req = request, res = response) => {
         genero: req.body.genero,
         correo: req.body.correo,
         password: req.body.password,
-        // personaId: newPersona.id
+        personaId: newPersona.id
 
     })
 
     res.send({ newUser });
-    // res.send({ newUser, newPersona });
+    res.send({ newUser, newPersona });
 
 }
 
 //OBTENER UN USUARIO
 const getUser = async (req = request, res = response) => {
 
-    const user = await User.findOne({
+    const user = await Users.findOne({
         where: {
             id: req.params.id
         },
         include: [{
-            model: Persona
+            model: Personas
         }]
     });
 
@@ -77,49 +80,34 @@ const getUser = async (req = request, res = response) => {
 // ACTUALIZAR USUARIO
 const updateUser = async (req = request, res = response) => {
 
-    const user = await User.findByPk(req.params.id);
+    const { body } = req;
 
-    if (!user) {
-        return res.send({ mensaje: `Usuario no existe` });
+    const user = await Users.findByPk(req.params.id);
+    const persona = await Personas.findByPk(body.personaId);
+
+    if (user && persona) {
+
+        await user.update({
+            correo: body.correo
+        });
+
+        await persona.update({
+            apellido: body.apellido,
+            direccion: body.direccion,
+            genero: body.genero,
+            nombre: body.nombre,
+            telefono: body.telefono
+        });
+
+        res.send({ ok: true, mensaje: 'Actualizado con exito!' })
+
+    } else {
+        res.json({ mensaje: 'Elemento no encontrado' });
     }
 
-    await user.update({
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
-        telefono: req.body.telefono,
-        direccion: req.body.direccion,
-        genero: req.body.genero, 
-        correo: req.body.correo,
-        password: req.body.password
-    });
-
-
-    return res.send({ mensaje: `Usuario actualzado` });
-
-    res.send(user);
-
-
-    // let persona = await Persona.findByPk(user.personaId);
-
-    // if (!persona) {
-
-    //     return res.send({ mensaje: `Usuario no existe` });
-    // }
-
-    // await persona.update({
-
-    //     nombre: req.body.nombre,
-    //     apellido: req.body.apellido,
-    //     telefono: req.body.telefono,
-    //     direccion: req.body.direccion,
-    //     genero: req.body.genero,
-    // })
-
-    // return res.send({ mensaje: `Usuario actualzado` });
-
-    // res.send(user);
-
 }
+
+//ELIMINAR USUARIO
 
 const deleteUser = async (req = request, res = response) => {
 
@@ -142,7 +130,7 @@ const deleteUser = async (req = request, res = response) => {
 
 const login = async (req = request, res = response) => {
 
-    const user = await User.findOne({
+    const user = await Users.findOne({
         where: {
             correo: req.body.correo,
             password: req.body.password

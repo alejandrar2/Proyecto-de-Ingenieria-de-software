@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SubirImagenService } from 'src/app/servicios/subir-imagen.service';
+import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-perfil',
@@ -10,33 +12,46 @@ import { SubirImagenService } from 'src/app/servicios/subir-imagen.service';
 })
 export class PerfilComponent implements OnInit {
 
-  formularioActualizar = new FormGroup({
-    nombre: new FormControl('', [Validators.required]),
-    apellido: new FormControl('', [Validators.required]),
-    telefono: new FormControl('', [Validators.required]),
-    direccion: new FormControl('', [Validators.required]),
-    genero: new FormControl('', [Validators.required]),
-    correo: new FormControl('', [Validators.required, Validators.email])
-  });
-
   urlImagen: string = '';
   imagenSubida = false;
   backendHost: string = 'http://localhost:3500';
   personas: any = [];
-  persona: any = [];
+  persona = {
+    nombre: '',
+    apellido: '',
+    telefono: '',
+    direccion: '',
+    genero: '',
+    correo: '',
+    personaId: '',
+    id: ''
+  }
 
-  constructor(private httpClient: HttpClient, private serviceImagen: SubirImagenService) { }
+  constructor(private serviceUsuario: UsuarioService, private serviceImagen: SubirImagenService, private Router: Router) { }
 
   idUsuario: String = '';
 
   ngOnInit(): void {
-    this.httpClient.get(`${this.backendHost}/user`)
-      .subscribe(res => {
-        this.personas = res;
-        console.log(this.personas);
-      });
 
     this.idUsuario = JSON.parse(window.localStorage.getItem('user') || '');
+
+
+    this.obtenerUsuario();
+
+  }
+
+  obtenerUsuario() {
+    this.serviceUsuario.obtenerUsuario(this.idUsuario).subscribe((res: any) => {
+      console.log(res);
+      this.persona.nombre = res.persona.nombre;
+      this.persona.apellido = res.persona.apellido;
+      this.persona.telefono = res.persona.telefono;
+      this.persona.correo = res.correo;
+      this.persona.direccion = res.persona.direccion;
+      this.persona.genero = res.persona.genero;
+      this.persona.id = res.id;
+      this.persona.personaId = res.personaId
+    });
 
   }
 
@@ -53,23 +68,20 @@ export class PerfilComponent implements OnInit {
       this.urlImagen = res.url;
       this.imagenSubida = true;
     });;
-
-
   }
 
-  actualizar(i: any) {
-    this.httpClient.put(`${this.backendHost}/user/${this.idUsuario}`, this.formularioActualizar)
-      .subscribe((res: any) => {
-        console.log(res);
-      })
-  }
+  actualizar() {
+    console.log(this.persona);
+    this.serviceUsuario.editarUsuario(this.persona, this.idUsuario).subscribe((res: any) => {
 
-  editar(i: any) {
-    this.httpClient.get(`${this.backendHost}/user/${i}`)
-      .subscribe(res => {
-        this.persona = res;
-        console.log(this.persona);
-      });
+      if (res.ok) {
+        console.log('Se actualizo con exito');
+        this.Router.navigate(['/dashboard-cliente']);
+      } else {
+        console.log('Error');
+      }
+
+    })
   }
 
 }

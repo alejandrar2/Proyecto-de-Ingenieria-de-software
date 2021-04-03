@@ -13,6 +13,7 @@ import { DenunciasComponent } from './paginas/denuncias/denuncias.component';
 import { PerfilComponent } from './paginas/perfil/perfil.component';
 import { CrearUsuarioComponent } from './paginas/crear-usuario/crear-usuario.component';
 import { LoginUsuarioComponent } from './paginas/login-usuario/login-usuario.component';
+import { ClienteGuard } from './guardianes/cliente.guard';
 
 const routes: Routes = [
   //{path: '', component: RegistroUsuariosComponent},
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'contrato', component: ContratoComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'crear-usuario', component: CrearUsuarioComponent },
-  {path: 'login-usuario', component:LoginUsuarioComponent},
+  { path: 'login-usuario', component: LoginUsuarioComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
 
@@ -33,17 +34,17 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'dashboard-cliente', component: DashboardClienteComponent, children: [
+    path: 'dashboard-cliente', component: DashboardClienteComponent, canActivate:[ClienteGuard], children: [
       {
-        path: 'productos', component: ProductosComponent,
+        path: 'productos', component: ProductosComponent, canActivate:[ClienteGuard]
       },
 
       {
-        path: 'perfil', component: PerfilComponent,
+        path: 'perfil', component: PerfilComponent, canActivate:[ClienteGuard]
       },
 
       {
-        path: 'galeria', component: GaleriaComponent,
+        path: 'galeria', component: GaleriaComponent, canActivate:[ClienteGuard]
       }
 
     ]
