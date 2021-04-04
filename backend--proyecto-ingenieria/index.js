@@ -12,13 +12,9 @@ app.use(cors());
 
 // Rutas
 app.use('/user', require('./routes/user'));
+app.use('/administrador', require('./routes/administrador'));
 app.use('/producto', require('./routes/producto'));
 app.use('/categoria', require('./routes/categoria'));
-
-
-
-
-
 
 app.listen(3500, () => {
 

@@ -1,0 +1,29 @@
+<div style="margin-right:8px ;" class="row">
+    <div style="background-image: url(../../../assets/images/7.png);background-position: center center ; background-repeat: no-repeat ; background-size:cover; height: 657px;"
+        class=" col-8 md-4 sm-2">
+    </div>
+    <form [formGroup]="formularioRegistro" style="background-color: #24303C;" class="col-4 md-2 ">
+        <div style="margin-top: 0px;" class="form-register">
+            <img style="width: 229px; height: 123px; padding-left: 64px;" src="">
+            <h6>Registrarse</h6>
+            <input formControlName="nombre" class="controls" type="text" placeholder="Ingrese su Nombre">
+            <input formControlName= "apellido" fom class="controls" type="text" name="apellido" placeholder="Ingrese su Apellido">
+            <div> 
+                <select formControlName= "genero" class="controls" style="color:rgb(117, 117, 117)">
+                    <option selected>Genero</option>
+                    <option>Hombre</option>
+                    <option>Mujer</option>
+                </select>
+            </div>
+            <input formControlName= "telefono" class="controls" type="number" name="Telefono" placeholder="Telefono">
+            <input formControlName= "direccion" class="controls" type="text" name="Telefono" placeholder="Direccion">
+            <input formControlName= "correo" class="controls" type="email" name="correo" placeholder="Ingrese su Correo">
+            <input formControlName= "password" class="controls" type="password" name="contrasenia" placeholder="Ingrese su Contraseña">
+            <label>
+                <input type="checkbox" value="remember-me"> De acuerdo con los terminos y condiciones
+            </label>
+            <button [disabled]="!formularioRegistro.valid" style="width: 47%; margin-left: 92px;" class="botons btn btn-sm btn-block" type="reset"
+                (click)="crearAdministrador()">Registrarse</button>
+            <p><a href="#">¿Ya tengo Cuenta?</a></p>
+        </div>
+    </form>

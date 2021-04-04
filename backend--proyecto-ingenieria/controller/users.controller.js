@@ -30,7 +30,7 @@ const getUsers = async (req = request, res = response) => {
 //CREAR USUARIOS
 const createUser = async (req = request, res = response) => {
 
-    let newPersona = await Persona.create({
+    let newPersona = await Personas.create({
         nombre: req.body.nombre,
         apellido: req.body.apellido,
         telefono: req.body.telefono,
@@ -40,7 +40,7 @@ const createUser = async (req = request, res = response) => {
     });
 
 
-    let newUser = await User.create({
+    let newUser = await Users.create({
         nombre: req.body.nombre,
         apellido: req.body.apellido,
         telefono: req.body.telefono,
@@ -143,14 +143,6 @@ const login = async (req = request, res = response) => {
         return res.send({ user: user.id, ok: true });
     }
 }
-
-
-
-
-
-
-
-
 
 module.exports = {
     getUsers,

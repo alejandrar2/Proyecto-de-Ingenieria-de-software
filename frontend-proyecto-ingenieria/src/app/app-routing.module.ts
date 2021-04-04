@@ -12,7 +12,9 @@ import { ClientesComponent } from './paginas/clientes/clientes.component';
 import { DenunciasComponent } from './paginas/denuncias/denuncias.component';
 import { PerfilComponent } from './paginas/perfil/perfil.component';
 import { CrearUsuarioComponent } from './paginas/crear-usuario/crear-usuario.component';
+import { CrearAdministradorComponent } from './paginas/crear-administrador/crear-administrador.component';
 import { LoginUsuarioComponent } from './paginas/login-usuario/login-usuario.component';
+import { LoginAdministradorComponent } from './paginas/login-administrador/login-administrador.component';
 import { ClienteGuard } from './guardianes/cliente.guard';
 
 const routes: Routes = [
@@ -21,7 +23,9 @@ const routes: Routes = [
   { path: 'contrato', component: ContratoComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'crear-usuario', component: CrearUsuarioComponent },
+  { path: 'crear-administrador', component: CrearAdministradorComponent },
   { path: 'login-usuario', component: LoginUsuarioComponent },
+  { path: 'login-administrador', component: LoginAdministradorComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
 

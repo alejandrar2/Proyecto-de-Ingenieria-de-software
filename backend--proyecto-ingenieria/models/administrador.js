@@ -6,7 +6,7 @@ class Administrador extends Model { }
 
 Administrador.init({
     correo: DataTypes.STRING,
-    contrasenia: DataTypes.STRING
+    password: DataTypes.STRING
     
 },
     {

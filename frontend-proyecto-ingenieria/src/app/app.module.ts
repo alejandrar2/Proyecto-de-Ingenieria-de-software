@@ -25,6 +25,8 @@ import { PerfilComponent } from './paginas/perfil/perfil.component';
 import { ClientesComponent } from './paginas/clientes/clientes.component';
 import { CrearUsuarioComponent } from './paginas/crear-usuario/crear-usuario.component';
 import { LoginUsuarioComponent } from './paginas/login-usuario/login-usuario.component';
+import { LoginAdministradorComponent } from './paginas/login-administrador/login-administrador.component';
+import { CrearAdministradorComponent } from './paginas/crear-administrador/crear-administrador.component';
 
 
 const routes: Routes = [
@@ -54,7 +56,9 @@ const routes: Routes = [
     PerfilComponent,
     ClientesComponent,
     CrearUsuarioComponent,
-    LoginUsuarioComponent
+    LoginUsuarioComponent,
+    LoginAdministradorComponent,
+    CrearAdministradorComponent
   ],
   imports: [
     BrowserModule,
