@@ -9,6 +9,7 @@ const Persona = require('../models/persona');
 const Servicio = require('../models/servicio');
 const Publicacion = require('../models/publicacion');
 const Venta = require('../models/venta');
+const productoDepartamento = require('../models/productoDepartamento');
 
 
 
@@ -57,17 +58,18 @@ Administrador.hasMany(Servicio);
 
 Servicio.belongsTo(Administrador);
 
-//PRODUCTO A DEPARTAMENTO
+//PRODUCTODEPARTAMENTO A PRODUCTO
 
-Producto.hasMany(Departamento);
+productoDepartamento.belongsTo(Producto);
 
-Departamento.belongsTo(Producto);
+Producto.hasMany(productoDepartamento);
 
-// DEPARTAMENTO A MUNICIPIO 
+// PRODUCTODEPARTAMENTO A DEPARTAMENTO
 
-Departamento.hasMany(Municipio);
+productoDepartamento.belongsTo(Departamento);
 
-Municipio.belongsTo(Departamento);
+Departamento.hasMany(productoDepartamento);
+
 
 
 

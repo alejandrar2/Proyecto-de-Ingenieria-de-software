@@ -60,31 +60,17 @@
 				</div>
 				<div class="col-sm-3">
 					<div class="form-group">
-						<select class="btn email_boton" aria-label="Default select example">
+						<select [(ngModel)]="idDepartamento" (change)="obtenerProductos()" class="btn email_boton" aria-label="Default select example">
 							<option selected>Departamento</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
+							<option *ngFor="let item of departamentos" value="{{ item.id }}"> {{ item.nombre }} </option>
 						</select>
                     </div>
 				</div>
 				<div class="col-sm-3">
 					<div class="form-group">
-						<select class="btn email_boton" aria-label="Default select example">
-							<option selected>Municipio</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
-						</select>
-                    </div>
-				</div>
-				<div class="col-sm-3">
-					<div class="form-group">
-						<select class="btn email_boton" aria-label="Default select example">
+						<select [(ngModel)]="idCategoria" (change)="obtenerCategorias()" class="btn email_boton" aria-label="Default select example">
 							<option selected>Categoria</option>
-							<option value="1">One</option>
-							<option value="2">Two</option>
-							<option value="3">Three</option>
+							<option *ngFor="let item of categorias" value="{{item.id}}">{{item.nombre}}</option>
 						</select>
                     </div>
 				</div>
@@ -124,7 +110,7 @@
 			<h1 class="promoted_text">Mas <span style="border-bottom: 5px solid #4bc714;">Buscados</span></h1>
 			<div class="images_main">
 				<div class="row">
-					<div class="col-sm-6 col-md-6 col-lg-3">
+					<div *ngFor="let item of productos" class="col-sm-6 col-md-6 col-lg-3">
 						<div class="images"><img src="images/img-1.png" style="width: 100%;"></div>
 						<button class="promoted_bt">PROMOTED</button>
 						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img src="images/like-icon.png"></span></div>

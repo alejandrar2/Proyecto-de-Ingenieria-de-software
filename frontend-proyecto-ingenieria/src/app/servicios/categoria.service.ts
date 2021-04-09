@@ -8,9 +8,9 @@ export class CategoriaService {
 
   urlApi = 'http://localhost:3500/categoria/';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
-  }
+  
 //creacion de metodos para realizar consultas al back-end 
   obtenerCategorias() {
     return this.http.get(this.urlApi);
@@ -24,15 +24,16 @@ export class CategoriaService {
     return this.http.post(this.urlApi, categoria);
   }
 
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+

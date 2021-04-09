@@ -29,8 +29,10 @@ eliminarProducto(idProducto:any){
 
 }
 
-
-
-
-
+obtenerProductosCategoria(id:any){
+  return this.http.get(this.urlApi + 'categoria/' + id);
 }
+
+  
+}
+

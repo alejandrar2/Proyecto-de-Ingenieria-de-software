@@ -1,6 +1,7 @@
 const { response, request } = require('express');
 const Producto = require('../models/producto');
 
+
 // OBTENER PRODUCTOS
 const getProductos = async (req = request, res = response) => {
 
@@ -90,6 +91,26 @@ const deleteProducto = async (req = request, res = response) => {
 
 }
 
+//OBTENER PRODUCTOS POR CATEGORIA   
+
+const getProductosCategoria = async (req = request, res = response) => {
+
+    const productosCategoria = await Producto.findAll({
+
+        where:{
+            categoriumId: req.params.id
+        }
+    });
+
+    if (productosCategoria.length == 0) {
+        return res.send({ mensaje: 'No hay data' });
+    }
+
+    res.send(productosCategoria);
+
+
+}
+
 
 
 
@@ -98,5 +119,6 @@ module.exports = {
     getProducto,
     createProducto,
     updateProducto,
-    deleteProducto
+    deleteProducto,
+    getProductosCategoria
 }
