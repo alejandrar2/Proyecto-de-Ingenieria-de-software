@@ -16,6 +16,7 @@ export class InicioComponent implements OnInit {
   categorias: any = [];
   productos: any = [];
   departamentos: any = [];
+  filtro: String ='';
 
 
   constructor( private serviceProducto: ProductoService ,private serviceCategorias: CategoriaService, private productoDepartamentoService: ProductoDepartamentoService, private serviceDepartamento: DepartamentoService ) { }
@@ -27,27 +28,61 @@ export class InicioComponent implements OnInit {
 
   }
 
-  obtenerProductos(){
+  //OBTENER PRODUCTOS POR DEPARTAMENTO
+  obtenerProductosDepartamento(){
+
+    this.departamentos.forEach((item:any) => {
+      if (item.id == this.idDepartamento) {
+        this.filtro = item.nombre
+      }
+    });
+
     this.productoDepartamentoService.obtenerProductos(this.idDepartamento).subscribe((data:any)=>{
-      this.productos = data;
-      console.log(data)
+
+      this.productos = [];
+
+      data.forEach((item:any )=> {
+        this.productos.push(item.producto);
+      });
+
+      console.log(this.productos)
+
     });;
   }
 
-  obtenerCategorias(){
+  //OBTENER PRODUCTOS POR CATEGORIA
+
+  obtenerProductosCategorias(){
+
+    this.categorias.forEach((item:any) => {
+      if (item.id == this.idCategoria) {
+        this.filtro = item.nombre
+      }
+    });
+
     this.serviceProducto.obtenerProductosCategoria(this.idCategoria).subscribe((data:any)=>{
-      this.categorias = data;
+      
+      this.productos = data;
+
+      
     })
     
   }
-
+  //OBTENER DEPARTAMENTOS
+  
   obtenerDepartamentos() {
    this.serviceDepartamento.obtenerdepartamentos().subscribe((data:any)=>{
       this.departamentos = data;
-      console.log(data)
+      
+    
     });;
   }
 
-
+  //OBTENER CATEGORIAS
+  obtenerCategorias(){
+    this.serviceCategorias.obtenerCategorias().subscribe((data:any)=>{
+      this.categorias = data;
+    });
+  }
 
 }

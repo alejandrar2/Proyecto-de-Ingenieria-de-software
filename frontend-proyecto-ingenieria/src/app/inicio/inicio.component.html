@@ -1,83 +1,90 @@
- <!-- header section start -->
-	<div class="header_section">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-lg-3">
-					<div class="logo"><a href="index.html"><img src="src/images/logo.png"></a></div>
-				</div>
-				<div class="col-sm-6">
-					<nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                           <a class="nav-item nav-link" href="index.html">INICIO</a>
-                           <a class="nav-item nav-link" href="browse ads.html">PERFIL</a>
-                           <a class="nav-item nav-link" href="about.html">ABOUT</a>
-                        </div>
-                    </div>
-                    </nav>
-				</div>
-				<div class="col-sm-6 col-lg-3">
-					<div class="search_main">
-                    <button class="submit_bt"><a href="#"><span class="doctor"></span>INICIAR SESION</a></button>
-				    </div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- header section end -->
-	<!-- banner section start -->
-	<div class="layout_padding banner_section">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12">
-					<h1 class="banner_taital">Todo lo que necesitas esta aqui y mucho mas</h1>
-					<p class="browse_text">Navegue en mas de 5,000 anuncios y publique los suyos a diarios</p>
-				
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- banner section end -->
-	<!-- search box start -->
+<!-- header section start -->
+<div class="header_section">
 	<div class="container">
-		<div class="search_box">
-			<div><h1>Buqueda Personalizada</h1>
-					<div class="col-sm-3">
-					<div class="form-group">
-                        <button class="search_bt" style="margin: 10px 0px 0px 840px!important; float: none!important; ">Buscar</button>
-                    </div>
+		<div class="row">
+			<div class="col-sm-12 col-lg-3">
+				<div class="logo"><a href="index.html"><img src="src/images/logo.png"></a></div>
+			</div>
+			<div class="col-sm-6">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+						<div class="navbar-nav">
+							<a class="nav-item nav-link" href="index.html">INICIO</a>
+							<a class="nav-item nav-link" href="browse ads.html">PERFIL</a>
+							<a class="nav-item nav-link" href="about.html">ABOUT</a>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="col-sm-6 col-lg-3">
+				<div class="search_main">
+					<button class="submit_bt"><a href="#"><span class="doctor"></span>INICIAR SESION</a></button>
 				</div>
 			</div>
-			
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="form-group">
-                        <input type="text" class="email_boton" placeholder="Buscar" name="Email">
-                    </div>
+		</div>
+	</div>
+</div>
+<!-- header section end -->
+<!-- banner section start -->
+<div class="layout_padding banner_section">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1 class="banner_taital">Todo lo que necesitas esta aqui y mucho mas</h1>
+				<p class="browse_text">Navegue en mas de 5,000 anuncios y publique los suyos a diarios</p>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- banner section end -->
+<!-- search box start -->
+<div class="container">
+	<div class="search_box">
+		<div>
+			<h1>Buqueda Personalizada</h1>
+			<div class="col-sm-3">
+				<div class="form-group">
+					<button class="search_bt"
+						style="margin: 10px 0px 0px 840px!important; float: none!important; ">Buscar</button>
 				</div>
-				<div class="col-sm-3">
-					<div class="form-group">
-						<select [(ngModel)]="idDepartamento" (change)="obtenerProductos()" class="btn email_boton" aria-label="Default select example">
-							<option selected>Departamento</option>
-							<option *ngFor="let item of departamentos" value="{{ item.id }}"> {{ item.nombre }} </option>
-						</select>
-                    </div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="form-group">
+					<input type="text" class="email_boton" placeholder="Buscar" name="Email">
 				</div>
-				<div class="col-sm-3">
-					<div class="form-group">
-						<select [(ngModel)]="idCategoria" (change)="obtenerCategorias()" class="btn email_boton" aria-label="Default select example">
-							<option selected>Categoria</option>
-							<option *ngFor="let item of categorias" value="{{item.id}}">{{item.nombre}}</option>
-						</select>
-                    </div>
+			</div>
+			<div class="col-sm-3">
+				<div class="form-group">
+					<select [(ngModel)]="idDepartamento" (change)="obtenerProductosDepartamento()"
+						class="btn email_boton" aria-label="Default select example">
+						<option value="0" selected>Departamento</option>
+						<option *ngFor="let item of departamentos" value="{{ item.id }}"> {{ item.nombre }} </option>
+					</select>
 				</div>
-				
-				<div class="fashion_menu">
-						<div><h2>Resultados</h2>
-                    	<table class="table">
+			</div>
+			<div class="col-sm-3">
+				<div class="form-group">
+					<select [(ngModel)]="idCategoria" (change)="obtenerProductosCategorias()" class="btn email_boton"
+						aria-label="Default select example">
+						<option value="0" selected>Categoria</option>
+						<option *ngFor="let item of categorias" value="{{item.id}}">{{item.nombre}}</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="fashion_menu">
+				<div>
+					<h2>Resultados</h2>
+					<table class="table">
 						<thead>
 							<tr>
 								<th scope="col"></th>
@@ -96,10 +103,10 @@
 								<td>@mdo</td>
 								<td>Otto</td>
 								<td>@mdo</td>
-							</tr>	
+							</tr>
 						</tbody>
-						</table>
-                </div>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -109,64 +116,52 @@
 		<div class="container">
 			<h1 class="promoted_text">Mas <span style="border-bottom: 5px solid #4bc714;">Buscados</span></h1>
 			<div class="images_main">
+				<h3 *ngIf="productos.length==0">No hay resultados</h3>
+				
+				<h2> {{ filtro }}  </h2>
 				<div class="row">
 					<div *ngFor="let item of productos" class="col-sm-6 col-md-6 col-lg-3">
 						<div class="images"><img src="images/img-1.png" style="width: 100%;"></div>
-						<button class="promoted_bt">PROMOTED</button>
-						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img src="images/like-icon.png"></span></div>
+						<button class="promoted_bt">{{ item.nombre }}</button>
+						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img
+									src="images/like-icon.png"></span></div>
 						<div class="numbar_text">30<span class="like-icon">01</span></div>
 						<button class="mobile_bt"><a href="#">Mobiles</a></button>
 					</div>
-					<div class="col-sm-6 col-md-6 col-lg-3">
-						<div class="images"><img src="images/img-2.png" style="width: 100%;"></div>
-						<button class="promoted_bt">PROMOTED</button>
-						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img src="images/like-icon.png"></span></div>
-						<div class="numbar_text">30<span class="like-icon">01</span></div>
-						<button class="mobile_bt"><a href="#">Cyicals</a></button>
-					</div>
-					<div class="col-sm-6 col-md-6 col-lg-3">
-						<div class="images"><img src="images/img-3.png" style="width: 100%;"></div>
-						<button class="promoted_bt">PROMOTED</button>
-						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img src="images/like-icon.png"></span></div>
-						<div class="numbar_text">30<span class="like-icon">01</span></div>
-						<button class="mobile_bt"><a href="#">Cars</a></button>
-					</div>
-					<div class="col-sm-6 col-md-6 col-lg-3">
-						<div class="images"><img src="images/img-4.png" style="width: 100%;"></div>
-						<button class="promoted_bt">PROMOTED</button>
-						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img src="images/like-icon.png"></span></div>
-						<div class="numbar_text">30<span class="like-icon">01</span></div>
-						<button class="mobile_bt"><a href="#">Laptops</a></button>
-					</div>
+
 				</div>
 			</div>
-			<div class="images_main">
+			<div  class="images_main d-none">
 				<div class="row">
 					<div class="col-sm-6 col-md-6 col-lg-3">
 						<div><img src="images/img-1.png" style="width: 100%;"></div>
 						<button class="promoted_bt">PROMOTED</button>
-						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img src="images/like-icon.png"></span></div>
+						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img
+									src="images/like-icon.png"></span></div>
 						<div class="numbar_text">30<span class="like-icon">01</span></div>
 						<button class="mobile_bt"><a href="#">Mobiles</a></button>
 					</div>
 					<div class="col-sm-6 col-md-6 col-lg-3">
 						<div><img src="images/img-2.png" style="width: 100%;"></div>
 						<button class="promoted_bt">PROMOTED</button>
-						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img src="images/like-icon.png"></span></div>
+						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img
+									src="images/like-icon.png"></span></div>
 						<div class="numbar_text">30<span class="like-icon">01</span></div>
 						<button class="mobile_bt"><a href="#">Cyicals</a></button>
 					</div>
 					<div class="col-sm-6 col-md-6 col-lg-3">
 						<div><img src="images/img-3.png" style="width: 100%;"></div>
 						<button class="promoted_bt">PROMOTED</button>
-						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img src="images/like-icon.png"></span></div>
+						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img
+									src="images/like-icon.png"></span></div>
 						<div class="numbar_text">30<span class="like-icon">01</span></div>
 						<button class="mobile_bt"><a href="#">Cars</a></button>
 					</div>
 					<div class="col-sm-6 col-md-6 col-lg-3">
 						<div><img src="images/img-4.png" style="width: 100%;"></div>
 						<button class="promoted_bt">PROMOTED</button>
-						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img src="images/like-icon.png"></span></div>
+						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img
+									src="images/like-icon.png"></span></div>
 						<div class="numbar_text">30<span class="like-icon">01</span></div>
 						<button class="mobile_bt"><a href="#">Laptops</a></button>
 					</div>
@@ -176,144 +171,165 @@
 	</div>
 	<!-- section PROMOTED end -->
 	<!-- section POPULAR STORES start -->
-    <div class="layout_padding popular_section">
-    	<div class="container">
-    		<h1 class="popular_taital">POPULAR <span style="border-bottom: 5px solid #4bc714;">STORES</span></h1>
-    		<div id="main_slider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="popular_section_2">
-    			    <div class="slider_img"><img src="images/img-5.png" style="max-width: 100%;"></div>
-    			        <h2 class="electronic_text">Electronic shop</h2>
-    			        <p class="contrary_text">Contrary to popular belief, Lorem 
-                        Ipsum is not simply random text. It has roots in a piece of classical Latin literature from</p>
-                        <button class="view_bt"><a href="#">VIEW ADS</a></button>
-    		        </div>
-                </div>
-            <div class="carousel-item">
-                <div class="popular_section_2">
-    			    <div class="slider_img"><img src="images/img-5.png"style="max-width: 100%;"></div>
-    			        <h2 class="electronic_text">Electronic shop</h2>
-    			        <p class="contrary_text">Contrary to popular belief, Lorem 
-                        Ipsum is not simply random text. It has roots in a piece of classical Latin literature from</p>
-                        <button class="view_bt"><a href="#">VIEW ADS</a></button>
-    		        </div>
-                </div>
-            <div class="carousel-item">
-                <div class="popular_section_2">
-    			    <div class="slider_img"><img src="images/img-5.png"style="max-width: 100%;"></div>
-    			    <h2 class="electronic_text">Electronic shop</h2>
-    			    <p class="contrary_text">Contrary to popular belief, Lorem 
-                    Ipsum is not simply random text. It has roots in a piece of classical Latin literature from</p>
-                    <button class="view_bt"><a href="#">VIEW ADS</a></button>
-    		    </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-            <i class="fa fa-angle-left"></i>
-        </a>
-        <a class="carousel-control-next" href="#main_slider" role="button" data-slide="prev">
-            <i class="fa fa-angle-right"></i>
-        </a>
+	<div class="layout_padding popular_section">
+		<div class="container">
+			<h1 class="popular_taital">POPULAR <span style="border-bottom: 5px solid #4bc714;">STORES</span></h1>
+			<div id="main_slider" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="popular_section_2">
+							<div class="slider_img"><img src="images/img-5.png" style="max-width: 100%;"></div>
+							<h2 class="electronic_text">Electronic shop</h2>
+							<p class="contrary_text">Contrary to popular belief, Lorem
+								Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+								from</p>
+							<button class="view_bt"><a href="#">VIEW ADS</a></button>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="popular_section_2">
+							<div class="slider_img"><img src="images/img-5.png" style="max-width: 100%;"></div>
+							<h2 class="electronic_text">Electronic shop</h2>
+							<p class="contrary_text">Contrary to popular belief, Lorem
+								Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+								from</p>
+							<button class="view_bt"><a href="#">VIEW ADS</a></button>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="popular_section_2">
+							<div class="slider_img"><img src="images/img-5.png" style="max-width: 100%;"></div>
+							<h2 class="electronic_text">Electronic shop</h2>
+							<p class="contrary_text">Contrary to popular belief, Lorem
+								Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+								from</p>
+							<button class="view_bt"><a href="#">VIEW ADS</a></button>
+						</div>
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+					<i class="fa fa-angle-left"></i>
+				</a>
+				<a class="carousel-control-next" href="#main_slider" role="button" data-slide="prev">
+					<i class="fa fa-angle-right"></i>
+				</a>
 
-    </div>
-    </div>
-    </div>
+			</div>
+		</div>
+	</div>
 	<!-- section POPULAR STORES end -->
 	<!-- about section start -->
-    <div class="layout_padding about_section">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-sm-12">
-    				<h1 class="about_taital">About Our Classified ads</h1>
-    				<p class="lorem_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
-    			</div>
-    		</div>
-    	</div>
-    </div>
+	<div class="layout_padding about_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h1 class="about_taital">About Our Classified ads</h1>
+					<p class="lorem_text">It is a long established fact that a reader will be distracted by the readable
+						content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
+						more-or-less normal distribution of letters, as opposed to</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- about section end -->
 	<!-- client section start -->
-    <div class="layout_padding clients_section">
-    	<div class="container">
-    		<div id="client_slide" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#client_slide" data-slide-to="0" class="active"></li>
-    <li data-target="#client_slide" data-slide-to="1"></li>
-    <li data-target="#client_slide" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="row">
-    			<div class="col-sm-12">
-    				<h1 class="promoted_text">CLIENTS <span style="border-bottom: 5px solid #4bc714;">REVIEW</span></h1>
-    				<div class="client_img"><img src="images/client-img.png"></div>
-    				<h1 class="client_text">JHON DUE</h1>
-    				<p class="adiser_text">(adiser)</p>
-    				<p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
-    			</div>
-    		</div>
-    </div>
-    <div class="carousel-item">
-      <div class="row">
-    			<div class="col-sm-12">
-    				<h1 class="promoted_text">CLIENTS <span style="border-bottom: 5px solid #4bc714;">REVIEW</span></h1>
-    				<div class="client_img"><img src="images/client-img.png"></div>
-    				<h1 class="client_text">JHON DUE</h1>
-    				<p class="adiser_text">(adiser)</p>
-    				<p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
-    			</div>
-    		</div>
-    </div>
-    <div class="carousel-item">
-      <div class="row">
-    			<div class="col-sm-12">
-    				<h1 class="promoted_text">CLIENTS <span style="border-bottom: 5px solid #4bc714;">REVIEW</span></h1>
-    				<div class="client_img"><img src="images/client-img.png"></div>
-    				<h1 class="client_text">JHON DUE</h1>
-    				<p class="adiser_text">(adiser)</p>
-    				<p class="long_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to</p>
-    			</div>
-    		</div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
+	<div class="layout_padding clients_section">
+		<div class="container">
+			<div id="client_slide" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#client_slide" data-slide-to="0" class="active"></li>
+					<li data-target="#client_slide" data-slide-to="1"></li>
+					<li data-target="#client_slide" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="row">
+							<div class="col-sm-12">
+								<h1 class="promoted_text">CLIENTS <span
+										style="border-bottom: 5px solid #4bc714;">REVIEW</span></h1>
+								<div class="client_img"><img src="images/client-img.png"></div>
+								<h1 class="client_text">JHON DUE</h1>
+								<p class="adiser_text">(adiser)</p>
+								<p class="long_text">It is a long established fact that a reader will be distracted by
+									the readable content of a page when looking at its layout. The point of using Lorem
+									Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="row">
+							<div class="col-sm-12">
+								<h1 class="promoted_text">CLIENTS <span
+										style="border-bottom: 5px solid #4bc714;">REVIEW</span></h1>
+								<div class="client_img"><img src="images/client-img.png"></div>
+								<h1 class="client_text">JHON DUE</h1>
+								<p class="adiser_text">(adiser)</p>
+								<p class="long_text">It is a long established fact that a reader will be distracted by
+									the readable content of a page when looking at its layout. The point of using Lorem
+									Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="row">
+							<div class="col-sm-12">
+								<h1 class="promoted_text">CLIENTS <span
+										style="border-bottom: 5px solid #4bc714;">REVIEW</span></h1>
+								<div class="client_img"><img src="images/client-img.png"></div>
+								<h1 class="client_text">JHON DUE</h1>
+								<p class="adiser_text">(adiser)</p>
+								<p class="long_text">It is a long established fact that a reader will be distracted by
+									the readable content of a page when looking at its layout. The point of using Lorem
+									Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- client section end -->
 	<!-- contact section start -->
-    <div class="contact_section layout_padding">
-    	<div class="container-fluid">
-    		<div class="row">
-    			<div class="col-md-6">
-                    <div class="input_main">
-                       <div class="container">
-                          <form action="/action_page.php">
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Your Name" name="Name">
-                            </div>
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Email" name="Email">
-                            </div>
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Phone" name="Email">
-                            </div>
-                            <form action="/action_page.php">
-                                <div class="form-group">
-                                  <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="text"></textarea>
-                                </div>
-                            </form>
-                          </form>
-                       </div> 
-                    </div>
-                </div>
-    			<div class="col-md-6">
-                    <div class="map-responsive">
-                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="450" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
-                    </div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
+	<div class="contact_section layout_padding">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="input_main">
+						<div class="container">
+							<form action="/action_page.php">
+								<div class="form-group">
+									<input type="text" class="email-bt" placeholder="Your Name" name="Name">
+								</div>
+								<div class="form-group">
+									<input type="text" class="email-bt" placeholder="Email" name="Email">
+								</div>
+								<div class="form-group">
+									<input type="text" class="email-bt" placeholder="Phone" name="Email">
+								</div>
+								<form action="/action_page.php">
+									<div class="form-group">
+										<textarea class="massage-bt" placeholder="Massage" rows="5" id="comment"
+											name="text"></textarea>
+									</div>
+								</form>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="map-responsive">
+						<iframe
+							src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France"
+							width="600" height="450" frameborder="0" style="border:0; width: 100%;"
+							allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- contact section end -->
 	<!-- footer section start -->
 	<div class="layout_padding footer_section">
@@ -321,15 +337,21 @@
 			<div class="row">
 				<div class="col-sm-6 col-md-6 col-lg-3">
 					<div><img src="images/footer-logo.png"></div>
-					<p class="dolor_text">dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et sdolor sit amet,</p>
+					<p class="dolor_text">dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+						ut labore et sdolor sit amet,</p>
 				</div>
 				<div class="col-sm-6 col-md-6 col-lg-3">
 					<h1 class="quick_text">Quick links</h1>
-					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span class="padding-left">Join Us</span></div>
-					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span class="padding-left">Maintenance</span></div>
-					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span class="padding-left">Language Packs</span></div>
-					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span class="padding-left">LearnPress</span></div>
-					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span class="padding-left">Release Status</span></div>
+					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span class="padding-left">Join
+							Us</span></div>
+					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span
+							class="padding-left">Maintenance</span></div>
+					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span class="padding-left">Language
+							Packs</span></div>
+					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span
+							class="padding-left">LearnPress</span></div>
+					<div class="chevron_arrow"><img src="images/chevron-arrow.png"><span class="padding-left">Release
+							Status</span></div>
 				</div>
 				<div class="col-sm-6 col-md-6 col-lg-3">
 					<h1 class="subscribe_text">Subcribe email</h1>
@@ -339,13 +361,14 @@
 				</div>
 				<div class="col-sm-6 col-md-6 col-lg-3">
 					<h1 class="quick_text">Contact Us</h1>
-					<div class="map_flag"><img src="images/map-flag.png"><span class="padding-left">London 145 United Kingdom</span></div>
-					<div class="dolor_text"><img src="images/email-icon.png"><span class="padding-left">adsiter@gmail.com</span></div>
-					<div class="dolor_text"><img src="images/phone-icon.png"><span class="padding-left">+12586954775</span></div>
+					<div class="map_flag"><img src="images/map-flag.png"><span class="padding-left">London 145 United
+							Kingdom</span></div>
+					<div class="dolor_text"><img src="images/email-icon.png"><span
+							class="padding-left">adsiter@gmail.com</span></div>
+					<div class="dolor_text"><img src="images/phone-icon.png"><span
+							class="padding-left">+12586954775</span></div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- footer section end -->
-	
-	  
