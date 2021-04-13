@@ -158,13 +158,13 @@ nav.main-menu {
 .submit_bt{
     font-size: 14pt; 
     color: #ffffff;
-    background-color: #69c934;
+    background-color:rgb(30, 61, 88);
     border: 0px;
     height: 50px;
     padding: 0px 20px;
     margin-top: 30px;
 }
-.submit_bt a:hover{ color: #000; }
+.submit_bt a:hover{ color:rgb(2, 206, 197) }
 
 .search_main{ width: 78%; float: right; }
 
@@ -183,6 +183,8 @@ nav.main-menu {
    padding-right: 0.8rem;
    padding-left: .7rem;
 }
+
+.navbar-light a:hover{ color:rgb(2, 206, 197)!important}
 
 .navbar-light .navbar-toggler {
    color: rgba(0,0,0,.5);
@@ -209,7 +211,7 @@ nav.main-menu {
 .banner_taital{
     width: 100%;
     float: left;
-    color: #ffffff;
+    color: white;
     font-size: 44pt;
     text-align: center;
 }
@@ -255,20 +257,26 @@ nav.main-menu {
 .email_boton{
     width: 100%;
     float: left;
-    color: #b2b1b1;
-    border: 1px solid #69c934;
+    color: #000000;
+    border: 1px solid #1985dd;
     padding: 10px 15px;
     font-size: 14pt;
 }
 
 .search_bt{
-    width: 90%;
+    width: 75%;
     color: #ffffff;
-    background-color: #69c934;
+    background-color:rgb(30, 61, 88);
     font-size: 14pt;
     border: 0px;
-    height: 55px;
+    height: 45px;
+
 }
+.search_bt:hover
+    { 
+        color:rgb(2, 206, 197)!important;
+    }
+
 .fashion_menu{
     width: 100%;
     float: left;
@@ -321,14 +329,14 @@ nav.main-menu {
 .images{ width: 100%; float: left; }
 
 .promoted_bt {
-   width: 90%;
+   width: 100%;
    text-align: center;
    background-color: #ffffff;
    margin: 0 auto;
    display: list-item;
-   top: -35px;
+   top: 2px;
    position: relative;
-   height: 50px;
+   height: 27px;
    border: 0px;
    font-size: 14pt;
 }
@@ -349,15 +357,15 @@ nav.main-menu {
 
 .mobile_bt{
     width: 60%;
-    margin: 0 auto;
+    margin: 10px 0px 18px 41px;
     text-align: center;
     font-size: 14pt;
     color: #fcfcfc;
-    background-color: #4bc714;
+    background-color: rgb(30, 61, 88);
     border: 0px;
     display: block;
 }
-.mobile_bt a:hover{ color: #000; }
+.mobile_bt a:hover{ color:rgb(2, 206, 197); }
 
 .popular_section{
     width: 100%;

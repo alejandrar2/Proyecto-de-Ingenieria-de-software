@@ -24,6 +24,10 @@ export class CategoriaService {
     return this.http.post(this.urlApi, categoria);
   }
 
+  actualizarCategoria(categoria:any, id:any) {
+    return this.http.put(this.urlApi + id, categoria);
+  }
+
 }
 
 

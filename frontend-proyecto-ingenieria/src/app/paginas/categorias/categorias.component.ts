@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CategoriaService } from 'src/app/servicios/categoria.service';
 
 @Component({
   selector: 'app-categorias',
@@ -17,7 +18,7 @@ export class CategoriasComponent implements OnInit {
   categorias: any = [];
   backendHost: string = 'http://localhost:3500';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private serviceCategoria: CategoriaService) { }
 
   ngOnInit(){
     this.httpClient.get(`${this.backendHost}/categoria`)
@@ -47,8 +48,5 @@ export class CategoriasComponent implements OnInit {
         
       });
   }  
-
-
-
 
 }

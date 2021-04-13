@@ -3,7 +3,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 col-lg-3">
-				<div class="logo"><a href="index.html"><img src="src/images/logo.png"></a></div>
+				<div class="logo">
+					<a routerlink href="/inicio"><img src="/assets/images/logo.png"></a>
+				</div>
 			</div>
 			<div class="col-sm-6">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,16 +16,16 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-							<a class="nav-item nav-link" href="index.html">INICIO</a>
-							<a class="nav-item nav-link" href="browse ads.html">PERFIL</a>
-							<a class="nav-item nav-link" href="about.html">ABOUT</a>
+							<a class="nav-item nav-link" routerLink="/inicio">INICIO</a>
+							<a class="nav-item nav-link" routerLink="/dashboard-cliente">PERFIL</a>
+							<a class="nav-item nav-link" routerLink="/login-usuario">INIRCIAR SESION</a>
 						</div>
 					</div>
 				</nav>
 			</div>
 			<div class="col-sm-6 col-lg-3">
 				<div class="search_main">
-					<button class="submit_bt"><a href="#"><span class="doctor"></span>INICIAR SESION</a></button>
+					<button class="submit_bt"><a routerLink="/crear-usuario"><span class="doctor"></span>REGISTRATE</a></button>
 				</div>
 			</div>
 		</div>
@@ -36,7 +38,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<h1 class="banner_taital">Todo lo que necesitas esta aqui y mucho mas</h1>
-				<p class="browse_text">Navegue en mas de 5,000 anuncios y publique los suyos a diarios</p>
+				<p class="browse_text">                                                            </p>
 
 			</div>
 		</div>
@@ -48,20 +50,11 @@
 	<div class="search_box">
 		<div>
 			<h1>Buqueda Personalizada</h1>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<button class="search_bt"
-						style="margin: 10px 0px 0px 840px!important; float: none!important; ">Buscar</button>
-				</div>
-			</div>
+			
 		</div>
 
 		<div class="row">
-			<div class="col-sm-3">
-				<div class="form-group">
-					<input type="text" class="email_boton" placeholder="Buscar" name="Email">
-				</div>
-			</div>
+			
 			<div class="col-sm-3">
 				<div class="form-group">
 					<select [(ngModel)]="idDepartamento" (change)="obtenerProductosDepartamento()"
@@ -80,33 +73,13 @@
 					</select>
 				</div>
 			</div>
+			<div class="col-sm-3">
+				<div class="form-group ">
+					<button class="search_bt">Buscar</button>
+				</div>
+			</div>
 
 			<div class="fashion_menu">
-				<div>
-					<h2>Resultados</h2>
-					<table class="table">
-						<thead>
-							<tr>
-								<th scope="col"></th>
-								<th scope="col">#</th>
-								<th scope="col">Nombre</th>
-								<th scope="col">Descripcion</th>
-								<th scope="col">Estado</th>
-								<th scope="col">Precio</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -114,19 +87,16 @@
 	<!-- section PROMOTED start -->
 	<div class=" layout_padding promoted_sectipon">
 		<div class="container">
-			<h1 class="promoted_text">Mas <span style="border-bottom: 5px solid #4bc714;">Buscados</span></h1>
+			<h1 class="promoted_text">Resultados<span style="border-bottom: 5px solid #4bc714;">Encontrados</span></h1>
 			<div class="images_main">
 				<h3 *ngIf="productos.length==0">No hay resultados</h3>
 				
 				<h2> {{ filtro }}  </h2>
 				<div class="row">
 					<div *ngFor="let item of productos" class="col-sm-6 col-md-6 col-lg-3">
-						<div class="images"><img src="images/img-1.png" style="width: 100%;"></div>
+						<div class="images"><img src="{{ item.imagen}}" style="width: 100%;"></div>
 						<button class="promoted_bt">{{ item.nombre }}</button>
-						<div class="eye-icon"><img src="images/eye-icon.png"><span class="like-icon"><img
-									src="images/like-icon.png"></span></div>
-						<div class="numbar_text">30<span class="like-icon">01</span></div>
-						<button class="mobile_bt"><a href="#">Mobiles</a></button>
+						<button class="mobile_bt"><a href="#">Contactar vendedor</a></button>
 					</div>
 
 				</div>

@@ -16,6 +16,19 @@ const getDepartamentos = async (req = request, res = response) => {
 
 }
 
+//CREAR DEPARTAMENTO
+const createDepartamento = async (req = request, res = response) => {
+
+    const newDepartamento = await Departamento.create({
+        nombre: req.body.nombre
+
+    });
+    res.send(newDepartamento);
+
+}
+
 module.exports = {
-    getDepartamentos
+    getDepartamentos,
+    createDepartamento,
+
 }
