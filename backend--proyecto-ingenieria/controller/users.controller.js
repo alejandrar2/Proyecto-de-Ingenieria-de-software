@@ -1,5 +1,4 @@
 const { response, request } = require('express');
-const Producto = require('../models/producto');
 const Users = require('../models/user');
 const Personas = require('../models/persona');
 
@@ -41,13 +40,11 @@ const createUser = async (req = request, res = response) => {
 
 
     let newUser = await Users.create({
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
-        telefono: req.body.telefono,
-        direccion: req.body.direccion,
-        genero: req.body.genero,
+
         correo: req.body.correo,
         password: req.body.password,
+        calificacion: 0,
+        cantidadCalificacion: 0,
         personaId: newPersona.id
 
     })
@@ -144,11 +141,40 @@ const login = async (req = request, res = response) => {
     }
 }
 
+
+// AGREGAR CALIFICACION
+
+const updatecalificacion = async (req = request, res = response) => {
+
+    const { body } = req;
+
+    const user = await Users.findByPk(req.params.id);
+
+    const { cantidadCalificacion, calificacion } = user
+
+    let newCantidadCalificacion = cantidadCalificacion + 1;
+
+    let newCalificacion = ( (cantidadCalificacion * calificacion) + Number(req.body.calificacion) ) / newCantidadCalificacion;
+
+    //return res.send({ newCantidadCalificacion, calificacion });
+
+    await user.update({
+        calificacion: Math.floor(newCalificacion),
+        cantidadCalificacion: Math.floor( newCantidadCalificacion )
+    });
+
+    res.send(user);
+
+}
+
+
+
 module.exports = {
     getUsers,
     getUser,
     createUser,
     updateUser,
     deleteUser,
-    login
+    login,
+    updatecalificacion
 }

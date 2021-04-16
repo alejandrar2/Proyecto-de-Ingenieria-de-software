@@ -1,5 +1,7 @@
 const { response, request } = require('express');
 const Producto = require('../models/producto');
+const User = require('../models/user');
+const { Op } = require("sequelize");
 
 
 // OBTENER PRODUCTOS
@@ -26,6 +28,7 @@ const createProducto = async (req = request, res = response) => {
         moneda: req.body.data.moneda,
         imagen: req.body.img,
         estado: req.body.data.estado,
+        fecha: req.body.data.fecha,
         categoriumId: Number(req.body.data.categoriumId)
 
     });
@@ -65,7 +68,7 @@ const updateProducto = async (req = request, res = response) => {
         descripcion: req.body.descripcion,
         moneda: req.body.moneda,
         imagen: req.body.imagen,
-        estado: req.body. estado
+        estado: req.body.estado,
     });
 
     res.send(producto);
@@ -77,7 +80,7 @@ const deleteProducto = async (req = request, res = response) => {
 
     const producto = await Producto.findByPk(req.params.id);
 
-    if (!producto ) {
+    if (!producto) {
         return res.send({ mensaje: `Producto no existe` });
     }
 
@@ -97,7 +100,7 @@ const getProductosCategoria = async (req = request, res = response) => {
 
     const productosCategoria = await Producto.findAll({
 
-        where:{
+        where: {
             categoriumId: req.params.id
         }
     });
@@ -111,6 +114,30 @@ const getProductosCategoria = async (req = request, res = response) => {
 
 }
 
+//PRODUCTOS POR FECHA 
+
+const getProductosFecha = async (req = request, res = response) => {
+
+    const productosFecha = await Producto.findAll({
+
+        where: {
+            fecha: {
+
+                [Op.eq]: req.params.fecha
+            }
+
+        }
+    });
+
+    if (productosFecha.length == 0) {
+        return res.send({ mensaje: 'No hay data' });
+    }
+
+    res.send(productosFecha);
+
+
+}
+
 
 
 
@@ -120,5 +147,6 @@ module.exports = {
     createProducto,
     updateProducto,
     deleteProducto,
-    getProductosCategoria
+    getProductosCategoria,
+    getProductosFecha
 }

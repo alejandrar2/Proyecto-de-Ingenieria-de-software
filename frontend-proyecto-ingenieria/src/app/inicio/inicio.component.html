@@ -25,7 +25,8 @@
 			</div>
 			<div class="col-sm-6 col-lg-3">
 				<div class="search_main">
-					<button class="submit_bt"><a routerLink="/crear-usuario"><span class="doctor"></span>REGISTRATE</a></button>
+					<button class="submit_bt"><a routerLink="/crear-usuario"><span
+								class="doctor"></span>REGISTRATE</a></button>
 				</div>
 			</div>
 		</div>
@@ -38,7 +39,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<h1 class="banner_taital">Todo lo que necesitas esta aqui y mucho mas</h1>
-				<p class="browse_text">                                                            </p>
+				<p class="browse_text"> </p>
 
 			</div>
 		</div>
@@ -50,15 +51,14 @@
 	<div class="search_box">
 		<div>
 			<h1>Buqueda Personalizada</h1>
-			
+
 		</div>
 
 		<div class="row">
-			
+
 			<div class="col-sm-3">
 				<div class="form-group">
-					<select [(ngModel)]="idDepartamento" (change)="obtenerProductosDepartamento()"
-						class="btn email_boton" aria-label="Default select example">
+					<select [(ngModel)]="idDepartamento" class="btn email_boton" aria-label="Default select example">
 						<option value="0" selected>Departamento</option>
 						<option *ngFor="let item of departamentos" value="{{ item.id }}"> {{ item.nombre }} </option>
 					</select>
@@ -73,11 +73,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-sm-3">
-				<div class="form-group ">
-					<button class="search_bt">Buscar</button>
-				</div>
-			</div>
+			
 
 			<div class="fashion_menu">
 			</div>
@@ -87,11 +83,11 @@
 	<!-- section PROMOTED start -->
 	<div class=" layout_padding promoted_sectipon">
 		<div class="container">
-			<h1 class="promoted_text">Resultados<span style="border-bottom: 5px solid #4bc714;">Encontrados</span></h1>
+			<h1 class="promoted_text">Productos<span style="border-bottom: 5px solid #4bc714;"></span></h1>
 			<div class="images_main">
 				<h3 *ngIf="productos.length==0">No hay resultados</h3>
-				
-				<h2> {{ filtro }}  </h2>
+
+				<h2> {{ filtro }} </h2>
 				<div class="row">
 					<div *ngFor="let item of productos" class="col-sm-6 col-md-6 col-lg-3">
 						<div class="images"><img src="{{ item.imagen}}" style="width: 100%;"></div>
@@ -101,7 +97,7 @@
 
 				</div>
 			</div>
-			<div  class="images_main d-none">
+			<div class="images_main d-none">
 				<div class="row">
 					<div class="col-sm-6 col-md-6 col-lg-3">
 						<div><img src="images/img-1.png" style="width: 100%;"></div>
@@ -139,6 +135,76 @@
 			</div>
 		</div>
 	</div>
+
+	
+
+	<!-- SEGUNDO FILTRADO -->
+
+	<div class="container">
+		<div class="search_box">
+			<div>
+				<h1>Buqueda Personalizada</h1>
+	
+			</div>
+	
+			<div class="row">
+	
+				<div class="col-sm-3">
+					<div class="form-group">
+						<select [(ngModel)]="idFecha" class="btn email_boton" aria-label="Default select example">
+							<option value="0" selected>Fecha</option>
+							<option *ngFor="let item of departamentos" value="{{ item.id }}"> {{ item.nombre }} </option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<select [(ngModel)]="idPrecio" class="btn email_boton" aria-label="Default select example">
+							<option value="0" selected>Precio</option>
+							<option *ngFor="let item of departamentos" value="{{ item.id }}"> {{ item.nombre }} </option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<select [(ngModel)]="idCalificacion"  class="btn email_boton"
+							aria-label="Default select example">
+							<option value="0" selected>Calificacion del vendedor</option>
+							<option *ngFor="let item of categorias" value="{{item.id}}">{{item.nombre}}</option>
+						</select>
+					</div>
+				</div>
+				
+	
+				<div class="fashion_menu">
+				</div>
+			</div>
+		</div>
+		<!-- search box end -->
+		<!-- section PROMOTED start -->
+		<div class=" layout_padding promoted_sectipon">
+			<div class="container">
+				<h1 class="promoted_text">Productos<span style="border-bottom: 5px solid #4bc714;"></span></h1>
+				<div class="images_main">
+					<h3 *ngIf="productos.length==0">No hay resultados</h3>
+	
+					<h2> {{ filtro }} </h2>
+					<div class="row">
+						<div *ngFor="let item of productos" class="col-sm-6 col-md-6 col-lg-3">
+							<div class="images"><img src="{{ item.imagen}}" style="width: 100%;"></div>
+							<button class="promoted_bt">{{ item.nombre }}</button>
+							<button class="mobile_bt"><a href="#">Contactar vendedor</a></button>
+						</div>
+	
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	
+
+
+	
 	<!-- section PROMOTED end -->
 	<!-- section POPULAR STORES start -->
 	<div class="layout_padding popular_section">
@@ -187,6 +253,11 @@
 			</div>
 		</div>
 	</div>
+
+	
+
+	
+
 	<!-- section POPULAR STORES end -->
 	<!-- about section start -->
 	<div class="layout_padding about_section">

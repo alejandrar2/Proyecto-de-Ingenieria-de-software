@@ -13,6 +13,9 @@ export class InicioComponent implements OnInit {
 
   idDepartamento: number = 0;
   idCategoria: number = 0;
+  idFecha: number= 0;
+  idPrecio: number = 0;
+  idCalificacion: number = 0;
   categorias: any = [];
   productos: any = [];
   departamentos: any = [];
@@ -28,32 +31,16 @@ export class InicioComponent implements OnInit {
 
   }
 
-  //OBTENER PRODUCTOS POR DEPARTAMENTO
-  obtenerProductosDepartamento(){
-
-    this.departamentos.forEach((item:any) => {
-      if (item.id == this.idDepartamento) {
-        this.filtro = item.nombre
-      }
-    });
-
-    this.productoDepartamentoService.obtenerProductos(this.idDepartamento).subscribe((data:any)=>{
-
-      this.productos = [];
-
-      data.forEach((item:any )=> {
-        this.productos.push(item.producto);
-      });
-
-      console.log(this.productos)
-
-    });;
-  }
+  
 
   //OBTENER PRODUCTOS POR CATEGORIA
 
   obtenerProductosCategorias(){
 
+
+    if (this.idDepartamento != 0 && this.idCategoria !=0) {
+      
+    }
     this.categorias.forEach((item:any) => {
       if (item.id == this.idCategoria) {
         this.filtro = item.nombre
@@ -63,6 +50,8 @@ export class InicioComponent implements OnInit {
     this.serviceProducto.obtenerProductosCategoria(this.idCategoria).subscribe((data:any)=>{
       
       this.productos = data;
+      console.log(this.idCategoria);
+      console.log(this.idDepartamento);
 
       
     })

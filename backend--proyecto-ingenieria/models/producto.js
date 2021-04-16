@@ -10,7 +10,8 @@ Producto.init({
     descripcion: DataTypes.STRING,
     moneda: DataTypes.DOUBLE,
     imagen: DataTypes.STRING,
-    estado: DataTypes.STRING
+    estado: DataTypes.STRING,
+    fecha: DataTypes.DATEONLY
 },
     {
         sequelize,
