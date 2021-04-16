@@ -20,6 +20,7 @@ export class InicioComponent implements OnInit {
   productos: any = [];
   departamentos: any = [];
   filtro: String ='';
+  fecha: any;
 
 
   constructor( private serviceProducto: ProductoService ,private serviceCategorias: CategoriaService, private productoDepartamentoService: ProductoDepartamentoService, private serviceDepartamento: DepartamentoService ) { }

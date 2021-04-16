@@ -151,10 +151,9 @@
 	
 				<div class="col-sm-3">
 					<div class="form-group">
-						<select [(ngModel)]="idFecha" class="btn email_boton" aria-label="Default select example">
-							<option value="0" selected>Fecha</option>
-							<option *ngFor="let item of departamentos" value="{{ item.id }}"> {{ item.nombre }} </option>
-						</select>
+
+						<input [(ngModel)]="fecha" type="date" placeholder="Seleccione una fecha" class="form-control">
+						
 					</div>
 				</div>
 				<div class="col-sm-3">
