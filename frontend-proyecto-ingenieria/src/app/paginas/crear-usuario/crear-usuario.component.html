@@ -20,7 +20,7 @@
             <input formControlName= "correo" class="controls" type="email" name="correo" placeholder="Ingrese su Correo">
             <input formControlName= "password" class="controls" type="password" name="contrasenia" placeholder="Ingrese su Contraseña">
              <p>
-                <input type="checkbox" value="remember-me"><a href="/frontend-proyecto-ingenieria/src/app/contrato/contrato.component.html" style="color: rgb(255, 255, 255);"> De acuerdo con los terminos y condiciones</a>
+                <input type="checkbox" value="remember-me"><a routerLink="/contrato" style="color: rgb(255, 255, 255);"> De acuerdo con los terminos y condiciones</a>
             </p>
             <button [disabled]="!formularioRegistro.valid" style="width: 47%; margin-left: 92px;" class="botons btn btn-sm btn-block" type="reset"
                 (click)="crearUsuario()">Registrarse</button>
