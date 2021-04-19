@@ -21,6 +21,7 @@ import {InicioComponent} from './inicio/inicio.component';
 const routes: Routes = [
   //{path: '', component: RegistroUsuariosComponent},
   { path: '', component: InicioComponent},
+  {path: '**', pathMatch: 'full', redirectTo: ''},
   { path: 'registro', component: RegistroUsuariosComponent },
   { path: 'contrato', component: ContratoComponent },
   { path: 'perfil', component: PerfilComponent },
