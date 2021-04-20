@@ -27,6 +27,7 @@ import { CrearUsuarioComponent } from './paginas/crear-usuario/crear-usuario.com
 import { LoginUsuarioComponent } from './paginas/login-usuario/login-usuario.component';
 import { LoginAdministradorComponent } from './paginas/login-administrador/login-administrador.component';
 import { CrearAdministradorComponent } from './paginas/crear-administrador/crear-administrador.component';
+import { PerfilVendedorComponent } from './paginas/perfil-vendedor/perfil-vendedor.component';
 
 
 const routes: Routes = [
@@ -58,7 +59,8 @@ const routes: Routes = [
     CrearUsuarioComponent,
     LoginUsuarioComponent,
     LoginAdministradorComponent,
-    CrearAdministradorComponent
+    CrearAdministradorComponent,
+    PerfilVendedorComponent
   ],
   imports: [
     BrowserModule,

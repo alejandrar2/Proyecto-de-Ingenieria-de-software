@@ -39,7 +39,7 @@ export class CrearUsuarioComponent implements OnInit {
       console.log(data);
       if (data) {
         window.localStorage.setItem('user', JSON.stringify(data.user));
-        this.router.navigate(['/dashboard-cliente']);
+        this.router.navigate(['/inicio']);
       } else {
         console.log('No se registro')
       }

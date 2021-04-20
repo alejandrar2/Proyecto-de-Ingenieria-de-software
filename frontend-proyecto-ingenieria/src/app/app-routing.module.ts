@@ -16,11 +16,10 @@ import { CrearAdministradorComponent } from './paginas/crear-administrador/crear
 import { LoginUsuarioComponent } from './paginas/login-usuario/login-usuario.component';
 import { LoginAdministradorComponent } from './paginas/login-administrador/login-administrador.component';
 import { ClienteGuard } from './guardianes/cliente.guard';
-import {InicioComponent} from './inicio/inicio.component';
+import { PerfilVendedorComponent } from './paginas/perfil-vendedor/perfil-vendedor.component';
 
 const routes: Routes = [
   //{path: '', component: RegistroUsuariosComponent},
-  { path: '', component: InicioComponent},
   { path: 'registro', component: RegistroUsuariosComponent },
   { path: 'contrato', component: ContratoComponent },
   { path: 'perfil', component: PerfilComponent },
@@ -28,6 +27,7 @@ const routes: Routes = [
   { path: 'crear-administrador', component: CrearAdministradorComponent },
   { path: 'login-usuario', component: LoginUsuarioComponent },
   { path: 'login-administrador', component: LoginAdministradorComponent },
+  { path: 'perfil-vendedor', component: PerfilVendedorComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
 
@@ -55,9 +55,9 @@ const routes: Routes = [
 
     ]
 
-  },
+  }
 
-{path: '**', pathMatch: 'full', redirectTo: ''}
+
 
 
 ];
