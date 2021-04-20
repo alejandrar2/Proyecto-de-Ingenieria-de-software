@@ -70,6 +70,12 @@ productoDepartamento.belongsTo(Departamento);
 
 Departamento.hasMany(productoDepartamento);
 
+// PRODUCTO A USUARIO
+
+
+
+
+
 
 
 

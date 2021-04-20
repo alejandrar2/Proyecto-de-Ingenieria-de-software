@@ -1,17 +1,17 @@
 const express = require('express');
-const { getProducto, createProducto, getProductos, updateProducto, deleteProducto, getProductosCategoria, getProductosFecha,getPrecio } = require('../controller/productos.controller');
-const {getProductosDepartamento} = require('../controller/productoDepartamento');
+const { getProducto, createProducto, getProductos, updateProducto, deleteProducto, getProductosCategoria, getProductosFecha, getPrecio } = require('../controller/productos.controller');
+const { getProductosDepartamento } = require('../controller/productoDepartamento');
 const router = express.Router();
 
 router.get('/', getProductos);
 
-router.get('/categoria/:id',getProductosCategoria);
+router.get('/categoria/:id', getProductosCategoria);
 
-router.get('/departamento/:idDepartamento/categoria/:idCategoria',getProductosDepartamento);
+router.get('/departamento/:idDepartamento/categoria/:idCategoria', getProductosDepartamento);
 
-router.get('/obtenerFechaProducto/:fecha',getProductosFecha);
+router.get('/obtenerFechaProducto/:fecha', getProductosFecha);
 
-router.get('/precioProducto/:precioMin/:precioMax',getPrecio);
+router.get('/precioProducto/:precioMin/:precioMax/:fecha/:calificacion', getPrecio);
 
 router.get('/:id', getProducto);
 

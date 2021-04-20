@@ -140,16 +140,24 @@ const getProductosFecha = async (req = request, res = response) => {
 
 //OBTENER PRODUCTOS POR PRECIO
 
-const getPrecio = async(req = request, res = response)=>{
+const getPrecio = async (req = request, res = response) => {
 
     const precioProducto = await Producto.findAll({
 
-        where : {
-            precio:{
+        where: {
 
-                [Op.between] : [req.params.precioMin, req.params.precioMax]
+            fecha: {
+
+                [Op.eq]: req.params.fecha
+            },
+            precio: {
+
+                [Op.between]: [req.params.precioMin, req.params.precioMax]
             }
-        }
+
+        },
+     
+
     });
     if (precioProducto.length == 0) {
         return res.send({ mensaje: 'No hay data' });
