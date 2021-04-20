@@ -164,7 +164,6 @@ const updatecalificacion = async (req = request, res = response) => {
     });
 
     res.send(user);
-
 }
 
 

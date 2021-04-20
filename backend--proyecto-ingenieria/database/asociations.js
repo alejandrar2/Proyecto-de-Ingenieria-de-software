@@ -10,7 +10,7 @@ const Servicio = require('../models/servicio');
 const Publicacion = require('../models/publicacion');
 const Venta = require('../models/venta');
 const productoDepartamento = require('../models/productoDepartamento');
-const Comentario = require('../models/comentario');
+const productoUsuario = require('../models/productoUsuario');
 
 
 
@@ -72,8 +72,15 @@ productoDepartamento.belongsTo(Departamento);
 
 Departamento.hasMany(productoDepartamento);
 
-// RELACION PRODUCTO COMENTARIO
-Producto.hasMany(Comentario);
 
-Comentario.belongsTo(Producto);
+// RELACION PRODUCTOUSUARIO PRODUCTO
+productoUsuario.belongsTo(Producto); 
+
+Producto.hasMany(productoUsuario);
+
+//RELACION PRODUCTOUSUARIO USUARIO
+
+productoUsuario.belongsTo(User); 
+
+User.hasMany(productoUsuario);
 

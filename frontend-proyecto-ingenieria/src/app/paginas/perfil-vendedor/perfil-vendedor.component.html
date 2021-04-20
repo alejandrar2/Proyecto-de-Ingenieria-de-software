@@ -43,8 +43,8 @@
 			    <div class="item mb-5">
 				    <div *ngFor="let item of productos" class="media">
 						
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" style="max-width: 230px; max-height: 170px;!important;" src="{{ item.imagen}}" alt="image"><br>
-						<div class="mr-3 img-fluid post-thumb d-none d-md-flex">{{item.nombre }}</div>
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" style="max-width: 230px; max-height: 170px;!important;" src="{{ item.imagen}}" alt="image" ><br>
+						
 					    <div class="media-body">
 						    
 						</div><!--//media-body-->
@@ -63,9 +63,9 @@
 		    <div class="container text-center">
 			    <h2 class="heading">Denunciar vendedor </h2>
 
-			    <form [formGroup]="formularioDenuncia" class="signup-form form-inline justify-content-center pt-3" >                    
-  					<input type="text" formControlName="contenido" class="form-control" placeholder="Escriba su denuncia " id="floatingTextarea2" style="height: 100px" required>
-					<button [disabled]="!formularioDenuncia.valid" style="margin: 10px 0px 0px 452px;!import" (click)="denuncia()" type="button" class="btn btn-primary margen">Enviar</button>
+			    <form  class="signup-form form-inline justify-content-center pt-3" >                    
+  					<input type="text" [(ngModel)]="denuncia.contenido" class="form-control" placeholder="Escriba su denuncia " id="floatingTextarea2" style="height: 100px" required>
+					<button  style="margin: 10px 0px 0px 452px;!import" (click)="enviarDenuncia()" type="button" class="btn btn-primary margen">Enviar</button>
 				</form>
 				
 		    </div><!--//container-->

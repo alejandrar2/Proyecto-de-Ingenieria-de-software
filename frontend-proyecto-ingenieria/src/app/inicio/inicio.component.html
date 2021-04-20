@@ -92,7 +92,7 @@
 					<div *ngFor="let item of productos" class="col-sm-6 col-md-6 col-lg-3">
 						<div class="images"><img src="{{ item.imagen}}" style="width: 100%;"></div>
 						<button class="promoted_bt">{{ item.nombre }}</button>
-						<button class="mobile_bt"><a href="#">Contactar vendedor</a></button>
+						<button class="mobile_bt"><a routerLink="/perfil-vendedor">Contactar vendedor</a></button>
 					</div>
 
 				</div>
@@ -140,17 +140,17 @@
 
 	<!-- SEGUNDO FILTRADO -->
 
-	<div class="container">
-		<div class="search_box">
+	<div class="container"  >
+		<div class="search_box" style="top: 40px!important;">
 			<div>
 				<h1>Buqueda Personalizada</h1>
 	
 			</div>
 	
-			<div class="row">
+			<div class="row" >
 	
-				<div class="col-sm-3">
-					<div class="form-group">
+				<div class="col-sm-3" >
+					<div class="form-group"  >
 
 						<input [(ngModel)]="fecha" type="date" placeholder="Seleccione una fecha" class="form-control">
 						

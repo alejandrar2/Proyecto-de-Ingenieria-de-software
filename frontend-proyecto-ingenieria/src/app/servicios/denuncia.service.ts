@@ -23,7 +23,7 @@ export class DenunciaService {
     return this.http.post(this.urlApi, denuncia);
   }
 
-
+  
 eliminarDenuncia(idDenuncia:any){
   return this.http.delete(this.urlApi + idDenuncia)
 

@@ -12,8 +12,6 @@ const getDepartamentos = async (req = request, res = response) => {
     }
 
     res.send(departamentos);
-
-
 }
 
 //CREAR DEPARTAMENTO
