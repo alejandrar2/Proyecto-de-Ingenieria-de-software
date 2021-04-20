@@ -1,19 +1,17 @@
 var { Model, DataTypes } = require('sequelize');
 var sequelize = require('../database/conexion');
 
+class Comentario extends Model{ }
 
-class Denuncia extends Model { }
-
-Denuncia.init({
+Comentario.init({
     
     contenido: DataTypes.STRING
 },
     {
         sequelize,
-        modelName: 'denuncia',
+        modelName: 'comentario',
         timestamps: false
     }
 );
 
-
-module.exports = Denuncia;
+module.exports = Comentario;

@@ -16,6 +16,8 @@ app.use('/administrador', require('./routes/administrador'));
 app.use('/producto', require('./routes/producto'));
 app.use('/categoria', require('./routes/categoria'));
 app.use('/departamento',require('./routes/departamento'));
+app.use('/denuncia',require('./routes/denuncia'));
+app.use('/comentario', require('./routes/comentario'));
 
 app.listen(3500, () => {
 

@@ -1,32 +1,23 @@
 const { response, request } = require('express');
 const Producto = require('../models/producto');
 const productoDepartamento = require('../models/productoDepartamento');
-const Categoria = require('../models/categoria');
 
 
-
-//OBTENER PRODUCTOS POR DEPARTAMENTOS
+//OBETENER PRODUCTOS POR DEPARTAMENTOS
 
 const getProductosDepartamento = async (req = request, res = response) => {
 
     const productosDepartamento = await productoDepartamento.findAll({
 
         where:{
-            departamentoId: req.params.idDepartamento
+            departamentoId: req.params.id
         },
 
         include:[
             {
-                model: Producto,
-
-                where:{
-                    categoriumId: req.params.idCategoria
-        
-                }
+                model: Producto
             }
-        
         ]
-
     });
 
     if (productosDepartamento.length == 0) {
