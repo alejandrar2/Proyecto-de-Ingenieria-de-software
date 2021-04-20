@@ -138,6 +138,26 @@ const getProductosFecha = async (req = request, res = response) => {
 
 }
 
+//OBTENER PRODUCTOS POR PRECIO
+
+const getPrecio = async(req = request, res = response)=>{
+
+    const precioProducto = await Producto.findAll({
+
+        where : {
+            precio:{
+
+                [Op.between] : [req.params.precioMin, req.params.precioMax]
+            }
+        }
+    });
+    if (precioProducto.length == 0) {
+        return res.send({ mensaje: 'No hay data' });
+    }
+
+    res.send(precioProducto);
+}
+
 
 
 
@@ -148,5 +168,6 @@ module.exports = {
     updateProducto,
     deleteProducto,
     getProductosCategoria,
-    getProductosFecha
+    getProductosFecha,
+    getPrecio
 }
