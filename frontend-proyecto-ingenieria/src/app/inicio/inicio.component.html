@@ -152,24 +152,33 @@
 				<div class="col-sm-3" >
 					<div class="form-group"  >
 
-						<input [(ngModel)]="fecha" type="date" placeholder="Seleccione una fecha" class="form-control">
+						<input  [(ngModel)]="fecha"  type="date" class="form-control">
 						
 					</div>
 				</div>
 				<div class="col-sm-3">
-					<div class="form-group">
-						<select [(ngModel)]="idPrecio" class="btn email_boton" aria-label="Default select example">
-							<option value="0" selected>Precio</option>
-							<option *ngFor="let item of departamentos" value="{{ item.id }}"> {{ item.nombre }} </option>
-						</select>
-					</div>
+					<div  class="input-group mb-3">
+						<span class="input-group-text">$</span>
+						<span class="input-group-text">Min</span>
+						<input [(ngModel)]="precioMin" type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+					  </div>
+					  
+					  <div   class="input-group">
+						<input [(ngModel)]="precioMax" type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+						<span class="input-group-text">$</span>
+						<span class="input-group-text">Max</span>
+					  </div>
 				</div>
 				<div class="col-sm-3">
 					<div class="form-group">
-						<select [(ngModel)]="idCalificacion"  class="btn email_boton"
+						<select (change)="obtnerProductoPrecio()" [(ngModel)]="idCalificacion"  class="btn email_boton"
 							aria-label="Default select example">
 							<option value="0" selected>Calificacion del vendedor</option>
-							<option *ngFor="let item of categorias" value="{{item.id}}">{{item.nombre}}</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
 						</select>
 					</div>
 				</div>
@@ -181,15 +190,15 @@
 		</div>
 		<!-- search box end -->
 		<!-- section PROMOTED start -->
-		<div class=" layout_padding promoted_sectipon">
+		<div class=" layout_padding promoted_sectipon "  *ngIf="productosFecha.length>0">
 			<div class="container">
 				<h1 class="promoted_text">Productos<span style="border-bottom: 5px solid #4bc714;"></span></h1>
 				<div class="images_main">
-					<h3 *ngIf="productos.length==0">No hay resultados</h3>
+					<h3 *ngIf="productosFecha.length==0">No hay resultados</h3>
 	
 					<h2> {{ filtro }} </h2>
 					<div class="row">
-						<div *ngFor="let item of productos" class="col-sm-6 col-md-6 col-lg-3">
+						<div *ngFor="let item of productosFecha" class="col-sm-6 col-md-6 col-lg-3">
 							<div class="images"><img src="{{ item.imagen}}" style="width: 100%;"></div>
 							<button class="promoted_bt">{{ item.nombre }}</button>
 							<button class="mobile_bt"><a href="#">Contactar vendedor</a></button>

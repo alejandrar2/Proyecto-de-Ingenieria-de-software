@@ -37,8 +37,8 @@ obtenerProductoFecha(idFecha: any){
   return this.http.get(this.urlApi + 'obtenerFechaProducto/' + idFecha )
 }
 
-obtenerPrecio(idMin: any, idMax:any){
-  return this.http.get(this.urlApi + 'precioProducto/' + idMin + '/' + idMax);
+obtenerProductoPrecio(Min: any, Max:any, fecha:any, calificacion:any){
+  return this.http.get(this.urlApi + 'precioProducto/' + Min + '/' + Max+ '/' + fecha+ '/' + calificacion);
 }
 
   
