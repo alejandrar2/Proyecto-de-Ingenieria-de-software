@@ -33,6 +33,14 @@ obtenerProductosCategoria(id:any){
   return this.http.get(this.urlApi + 'categoria/' + id);
 }
 
+obtenerProductoFecha(idFecha: any){
+  return this.http.get(this.urlApi + 'obtenerFechaProducto/' + idFecha )
+}
+
+obtenerPrecio(idMin: any, idMax:any){
+  return this.http.get(this.urlApi + 'precioProducto/' + idMin + '/' + idMax);
+}
+
   
 }
 
