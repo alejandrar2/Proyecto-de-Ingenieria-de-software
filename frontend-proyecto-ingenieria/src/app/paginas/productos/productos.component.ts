@@ -73,7 +73,7 @@ export class ProductosComponent implements OnInit {
 
 
   guardar() {
-    console.log(this.formularioProducto.value); //req.body.data.nombre, req.body.img.nombre,
+    console.log(this.formularioProducto.value); 
 
     this.serviceProducto.guardarProducto({ data: this.formularioProducto.value, img: this.urlImagen }).subscribe((res: any) => {
       console.log(res);

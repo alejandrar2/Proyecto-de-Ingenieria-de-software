@@ -16,4 +16,6 @@ export class ProductoUsuarioService {
     return this.http.get(this.urlApi + 'user/' + id);
   }
 
+  
+
 }

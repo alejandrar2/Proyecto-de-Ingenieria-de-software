@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'crear-administrador', component: CrearAdministradorComponent },
   { path: 'login-usuario', component: LoginUsuarioComponent },
   { path: 'login-administrador', component: LoginAdministradorComponent },
-  { path: 'perfil-vendedor', component: PerfilVendedorComponent },
+  { path: 'perfil-vendedor/:id', component: PerfilVendedorComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
 

@@ -72,7 +72,6 @@ productoDepartamento.belongsTo(Departamento);
 
 Departamento.hasMany(productoDepartamento);
 
-<<<<<<< HEAD
 
 // RELACION PRODUCTOUSUARIO PRODUCTO
 productoUsuario.belongsTo(Producto); 
@@ -84,12 +83,4 @@ Producto.hasMany(productoUsuario);
 productoUsuario.belongsTo(User); 
 
 User.hasMany(productoUsuario);
-=======
-
-// RELACION PRODUCTO COMENTARIO
-Producto.hasMany(Comentario);
-
-
-Comentario.belongsTo(Producto);
->>>>>>> b93dc0c8394f677e8c43a0b520c38693d12a4a43
 

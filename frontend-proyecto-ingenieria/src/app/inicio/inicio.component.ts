@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductosUsuario } from '../interfaces/productosUsuario';
 import { CategoriaService } from '../servicios/categoria.service';
 import { DepartamentoService } from '../servicios/departamento.service';
 import { ProductoDepartamentoService } from '../servicios/producto-departamento.service';
 import { ProductoService } from '../servicios/producto.service';
+import { ProductoInterface } from '../interfaces/productos'
 
 @Component({
   selector: 'app-inicio',
@@ -17,8 +19,11 @@ export class InicioComponent implements OnInit {
   idPrecio: number = 0;
   idCalificacion: number = 0;
   categorias: any = [];
-  productos: any = [];
-  productosFecha: any = [];
+  productosDepartamentoCategoria: ProductosUsuario[] = [];
+  productos: ProductosUsuario[] = [];
+  productosFecha: ProductosUsuario[] = [];
+  productosCategoria: ProductoInterface[] = [];
+  productosPrecioFechaCalificacion: ProductosUsuario[] = []
   departamentos: any = [];
   filtro: String = '';
   fecha: any;
@@ -30,91 +35,63 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.obtenerDepartamentos();
     this.obtenerCategorias();
 
   }
 
-
-
-  //OBTENER PRODUCTOS POR CATEGORIA
-
+  //OBTENER PRODUCTOS DEPARTAMENTO POR CATEGORIA
   obtenerProductosCategorias() {
 
 
-    if (this.idDepartamento != 0 && this.idCategoria != 0) {
+    if (this.idDepartamento == 0 && this.idCategoria == 0) {
+      console.log('object')
+    } else {
+      this.categorias.forEach((item: any) => {
+        if (item.id == this.idCategoria) {
+          this.filtro = item.nombre
+        }
+      });
 
+
+      this.serviceProducto.obtenerProductosDepartamentoCategoria(this.idDepartamento, this.idCategoria).subscribe((data: any) => {
+        this.productosDepartamentoCategoria = data;
+
+      })
     }
-    this.categorias.forEach((item: any) => {
-      if (item.id == this.idCategoria) {
-        this.filtro = item.nombre
-      }
-    });
-
-    this.serviceProducto.obtenerProductosCategoria(this.idCategoria).subscribe((data: any) => {
-
-      this.productos = data;
-     
-
-
-    })
-
   }
   //OBTENER DEPARTAMENTOS
-
   obtenerDepartamentos() {
     this.serviceDepartamento.obtenerdepartamentos().subscribe((data: any) => {
-      if (!data.mensaje) {
-        this.departamentos = data;
-      }
-    });;
+      this.departamentos = data
+    });
   }
 
   //OBTENER CATEGORIAS
   obtenerCategorias() {
     this.serviceCategorias.obtenerCategorias().subscribe((data: any) => {
-      this.categorias = data;
       if (!data.mensaje) {
-
-        if (data.length > 0) {
-          this.categorias = data;
-        }
-
+        this.categorias = data;
       }
     });
   }
 
-
   obtenerProductosFecha() {
-
     this.serviceProducto.obtenerProductoFecha(this.fecha).subscribe((data: any) => {
-     
-      if (!data.mensaje) {
-
-        if (data.length > 0) {
-          this.productosFecha = data;
-        }
-
-      }
-    })
-
-  }
-
-obtnerProductoPrecio(){
-
-  this.serviceProducto.obtenerProductoPrecio(this.precioMin, this.precioMax,this.fecha, this.idCalificacion).subscribe((data:any)=>{
-    console.log(data);
-
-    if (!data.mensaje) {
-
-      if (data.length > 0) {
+      if (data) {
         this.productosFecha = data;
       }
+    })
+  }
 
-    }
+  obtnerProductoPrecio() {
+    this.serviceProducto.obtenerProductoPrecio(this.precioMin, this.precioMax, this.fecha, this.idCalificacion).subscribe((data: any) => {
+      if (data) {
+        this.productosPrecioFechaCalificacion = data;
+      }
+    })
+  }
 
-  })
-}
-  
 
 }
