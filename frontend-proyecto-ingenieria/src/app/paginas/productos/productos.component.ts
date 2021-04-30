@@ -17,8 +17,9 @@ export class ProductosComponent implements OnInit {
   formularioProducto = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required]),
-    estado: new FormControl('', [Validators.required]),
+    estado: new FormControl('0', [Validators.required]),
     precio: new FormControl('', [Validators.required]),
+    fecha: new FormControl('', [Validators.required]),
     categoriumId: new FormControl('', [Validators.required])
   });
   constructor(private serviceProducto: ProductoService, private serviceCategoria: CategoriaService, private serviceImagen: SubirImagenService, private httpClient: HttpClient) { }
@@ -33,7 +34,7 @@ export class ProductosComponent implements OnInit {
 
     this.obtenerProductos();
     this.obtenerCategorias();
-  
+
 
   }
 
@@ -73,15 +74,34 @@ export class ProductosComponent implements OnInit {
 
 
   guardar() {
-    console.log(this.formularioProducto.value); //req.body.data.nombre, req.body.img.nombre,
+    console.log(this.formularioProducto.value);
 
     this.serviceProducto.guardarProducto({ data: this.formularioProducto.value, img: this.urlImagen }).subscribe((res: any) => {
       console.log(res);
       this.obtenerProductos();
+      this.limpiarCampos();
+      
     });
 
+  }
+
+  limpiarCampos(){
+    this.formularioProducto.setValue({
+      nombre: '',
+      descripcion: '',
+      estado: 0,
+      precio: '',
+      fecha: '',
+      categoriumId: ''
+    
+
+    })
 
   }
+
+
+  
+
   eliminarProducto(idProducto: any) {
     this.serviceProducto.eliminarProducto(idProducto).subscribe((res: any) => {
       console.log(res);
@@ -91,19 +111,19 @@ export class ProductosComponent implements OnInit {
 
   }
 
-  obtenerCategorias(){
-    this.serviceCategoria.obtenerCategorias().subscribe((data:any)=>{
+  obtenerCategorias() {
+    this.serviceCategoria.obtenerCategorias().subscribe((data: any) => {
       this.categorias = data;
     });
   }
 
-  editarProducto(idProducto: any){
-    console.log("Id producto es: "+ idProducto)
+  editarProducto(idProducto: any) {
+    console.log("Id producto es: " + idProducto)
     this.httpClient.get(`${this.backendHost}/producto/${idProducto}`)
-            .subscribe(res => { 
-              this.producto = res;   
-              console.log(this.producto);
-            });
+      .subscribe(res => {
+        this.producto = res;
+        console.log(this.producto);
+      });
   }
 
 }

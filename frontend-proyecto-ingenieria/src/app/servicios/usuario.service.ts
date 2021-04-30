@@ -23,13 +23,20 @@ export class UsuarioService {
     return this.http.put(this.urlApi+ id, usuario)
   }
 
-  //http://localhost:3500/user/1'
+ //OBTENER USUARIO
+
   obtenerUsuario(id:any){
     return this.http.get(this.urlApi+ id)
   }
-
+// OBTENER USUARIOS
   obtenerUsuarios(){
     return this.http.get(this.urlApi)
+  }
+
+ // AGREGAR CALIFICACION 
+  agregarCalificacion(iduser:any, calificacion: any){
+    return this.http.put(this.urlApi + '/calificacion/' + iduser , {calificacion})
+
   }
 
 

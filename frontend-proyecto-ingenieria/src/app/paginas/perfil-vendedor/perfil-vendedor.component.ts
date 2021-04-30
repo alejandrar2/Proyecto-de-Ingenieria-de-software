@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DenunciaService } from '../../servicios/denuncia.service';
 import { ComentarioService } from '../../servicios/comentario.service';
 import { HttpClient } from '@angular/common/http';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-perfil-vendedor',
@@ -13,6 +14,9 @@ import { HttpClient } from '@angular/common/http';
 export class PerfilVendedorComponent implements OnInit {
 
   productos: any = [];
+  calificacion : any;
+  idUser: any;
+
   
 
    formularioComentario = new FormControl({
@@ -38,7 +42,7 @@ export class PerfilVendedorComponent implements OnInit {
     estrella5: new FormControl('', [Validators.required]),
   });
 
-  constructor(private httpClient: HttpClient,private serviceComentario: ComentarioService,private serviceProducto: ProductoService, private serviceDenuncia: DenunciaService) { }
+  constructor(private httpClient: HttpClient,private serviceComentario: ComentarioService,private serviceProducto: ProductoService, private serviceDenuncia: DenunciaService, private serviceUser : UsuarioService) { }
 
   ngOnInit(): void {
     this.obtenerProductos();
@@ -73,10 +77,15 @@ export class PerfilVendedorComponent implements OnInit {
     });
   }
 
-  calificar(item: any) {
-    console.log(item);
+  //AGREGAR CALIFICACION 
 
-  }
+ agregarCalificacion(id:any, calificacion: any){
+   this.serviceUser.agregarCalificacion(this.idUser, this.calificacion).subscribe((data: any)=>{
+
+    
+   })
+   
+ }
 
   // denuncia(){
   //   console.log(this.formularioDenuncia.valid)

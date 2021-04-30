@@ -14,10 +14,7 @@
 					<div class="bio mb-3">Hi, my name is Scarlett.<br><br><div class="bio mb-3" >Calificar vendedor</div></div>
                     <form [formGroup]="formularioEstrellas">
 			            <span formControlName="estrella1" class="fa fa-star color"  click="calificar()"></span>
-                        <span formControlName="estrella2" class="fa fa-star color" click="calificar()" style="cursor: pointer;" id="2"></span>
-                        <span formControlName="estrella3" class="fa fa-star color" click="calificar()" style="cursor: pointer;" id="3"></span>
-                        <span formControlName="estrella4" class="fa fa-star color" click="calificar()" style="cursor: pointer;" id="4"></span>
-                        <span formControlName="estrella5" class="fa fa-star color" click="calificar()" style="cursor: pointer;" id="5"></span>
+                
 						
 			        </form> 
 			        <hr> 
@@ -43,7 +40,7 @@
 			    <div class="item mb-5">
 				    <div *ngFor="let item of productos" class="media">
 						
-					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" style="max-width: 230px; max-height: 170px;!important;" src="{{ item.imagen}}" alt="image" ><br>
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" style="max-width: 230px; max-height: 170px;" src="{{ item.imagen}}" alt="image" ><br>
 						
 					    <div class="media-body">
 						    
@@ -52,7 +49,7 @@
 								<div class="form-floating">
 									<input formControlName="contenido" type="text" class="form-control" placeholder="Comentar" id="floatingTextarea2" style="height: 100px">
 									<label for="floatingTextarea2">Ingrese su comentario</label>
-									<button (click)="enviarComentario()" style="margin: 10px 0px 0px 452px;!import" type="button" class="btn btn-primary margen">Comentar</button>
+									<button (click)="enviarComentario()" style="margin: 10px 0px 0px 452px;" type="button" class="btn btn-primary margen">Comentar</button>
 								</div>	
 					    </form>
 				    </div><!--//media-->
@@ -65,7 +62,7 @@
 
 			    <form  class="signup-form form-inline justify-content-center pt-3" >                    
   					<input type="text" [(ngModel)]="denuncia.contenido" class="form-control" placeholder="Escriba su denuncia " id="floatingTextarea2" style="height: 100px" required>
-					<button  style="margin: 10px 0px 0px 452px;!import" (click)="enviarDenuncia()" type="button" class="btn btn-primary margen">Enviar</button>
+					<button  style="margin: 10px 0px 0px 452px;" (click)="enviarDenuncia()" type="button" class="btn btn-primary margen">Enviar</button>
 				</form>
 				
 		    </div><!--//container-->
