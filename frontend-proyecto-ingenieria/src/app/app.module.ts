@@ -28,6 +28,8 @@ import { LoginUsuarioComponent } from './paginas/login-usuario/login-usuario.com
 import { LoginAdministradorComponent } from './paginas/login-administrador/login-administrador.component';
 import { CrearAdministradorComponent } from './paginas/crear-administrador/crear-administrador.component';
 import { PerfilVendedorComponent } from './paginas/perfil-vendedor/perfil-vendedor.component';
+import { GraficasComponent } from './paginas/graficas/graficas.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 const routes: Routes = [
@@ -60,7 +62,8 @@ const routes: Routes = [
     LoginUsuarioComponent,
     LoginAdministradorComponent,
     CrearAdministradorComponent,
-    PerfilVendedorComponent
+    PerfilVendedorComponent,
+    GraficasComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ const routes: Routes = [
     NgbModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    ChartsModule
   ],
   exports: [
     AppComponent    

@@ -17,6 +17,7 @@ import { LoginUsuarioComponent } from './paginas/login-usuario/login-usuario.com
 import { LoginAdministradorComponent } from './paginas/login-administrador/login-administrador.component';
 import { ClienteGuard } from './guardianes/cliente.guard';
 import { PerfilVendedorComponent } from './paginas/perfil-vendedor/perfil-vendedor.component';
+import { GraficasComponent } from './paginas/graficas/graficas.component';
 
 const routes: Routes = [
   //{path: '', component: RegistroUsuariosComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
       { path: 'usuario', component: UsuariosComponent },
       { path: 'categorias', component: CategoriasComponent },
       { path: 'clientes', component: ClientesComponent },
-      { path: 'denuncias', component: DenunciasComponent }
+      { path: 'denuncias', component: DenunciasComponent },
+      { path: 'graficas', component: GraficasComponent }
 
 
     ]
