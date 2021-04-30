@@ -1,16 +1,14 @@
 <div>
     <div class="container ">
-        <div class="Formulario ">
-            <div action="#" class="border p-4 form text-center ImagenBG">
+        <div  style="padding-top: -147px;">
+            <div action="#">
                 <div class="form-group">
                     <input (change)="subirImagen($event)" type="file" name="archivo" class="d-none" #input>
-                    <img (click)="input.click()" style="width: 292px; height: 150px; border-radius:14%"
-                        src="../../../assets/images/perfil.png">
 
                 </div>
                 <div>
                     <div class="row">
-                        <div class="col-md-6 border-right">
+                        <div class="col-md-6 ">
                             <div class="form-group">
                                 <label for="validationCustom01" class="form-label" for="Nombre">Nombre</label>
                                 <input [(ngModel)]="persona.nombre" type="text" 
@@ -52,7 +50,7 @@
 
                         </div>
                     </div>
-                    <div class="border-top mt-1">
+                    <div>
                         <p></p>
                     </div>
 
