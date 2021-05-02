@@ -150,16 +150,23 @@ const updatecalificacion = async (req = request, res = response) => {
 
     const user = await Users.findByPk(req.params.id);
 
+    let temp = 0;
+
     const { cantidadCalificacion, calificacion } = user
 
-    let newCantidadCalificacion = cantidadCalificacion + 1;
+    let newCantidadCalificacion = cantidadCalificacion + 5;
 
-    let newCalificacion = ( (cantidadCalificacion * calificacion) + (req.body.nueva) ) / newCantidadCalificacion;
+    let newCalificacion = ( (cantidadCalificacion * calificacion) + (req.body.nueva * 5) ) / newCantidadCalificacion;
 
-    //return res.send({ newCantidadCalificacion, calificacion });
+    if ( newCalificacion < 20 ) temp = 1; 
+    if ( newCalificacion > 20 && newCalificacion < 40 ) temp = 2; 
+    if ( newCalificacion > 40 && newCalificacion < 60 ) temp = 3; 
+    if ( newCalificacion > 60 && newCalificacion < 80 ) temp = 4; 
+    if ( newCalificacion > 80 && newCalificacion < 100 ) temp = 5; 
+    
 
     await user.update({
-        calificacion: newCalificacion,
+        calificacion: temp,
         cantidadCalificacion: Math.floor( newCantidadCalificacion )
     });
 
