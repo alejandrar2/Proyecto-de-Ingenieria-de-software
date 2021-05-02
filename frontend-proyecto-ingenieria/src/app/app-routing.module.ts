@@ -20,7 +20,7 @@ import { PerfilVendedorComponent } from './paginas/perfil-vendedor/perfil-vended
 import { GraficasComponent } from './paginas/graficas/graficas.component';
 
 const routes: Routes = [
-  //{path: '', component: RegistroUsuariosComponent},
+  { path: '', pathMatch: 'full', redirectTo: 'inicio' },
   { path: 'registro', component: RegistroUsuariosComponent },
   { path: 'contrato', component: ContratoComponent },
   { path: 'perfil', component: PerfilComponent },
@@ -31,28 +31,25 @@ const routes: Routes = [
   { path: 'perfil-vendedor/:id', component: PerfilVendedorComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
-
       { path: 'usuario', component: UsuariosComponent },
       { path: 'categorias', component: CategoriasComponent },
       { path: 'clientes', component: ClientesComponent },
       { path: 'denuncias', component: DenunciasComponent },
       { path: 'graficas', component: GraficasComponent }
-
-
     ]
   },
   {
-    path: 'dashboard-cliente', component: DashboardClienteComponent, canActivate:[ClienteGuard], children: [
+    path: 'dashboard-cliente', component: DashboardClienteComponent, canActivate: [ClienteGuard], children: [
       {
-        path: 'productos', component: ProductosComponent, canActivate:[ClienteGuard]
+        path: 'productos', component: ProductosComponent, canActivate: [ClienteGuard]
       },
 
       {
-        path: 'perfil', component: PerfilComponent, canActivate:[ClienteGuard]
+        path: 'perfil', component: PerfilComponent, canActivate: [ClienteGuard]
       },
 
       {
-        path: 'galeria', component: GaleriaComponent, canActivate:[ClienteGuard]
+        path: 'galeria', component: GaleriaComponent, canActivate: [ClienteGuard]
       }
 
     ]

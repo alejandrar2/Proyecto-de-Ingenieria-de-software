@@ -154,12 +154,12 @@ const updatecalificacion = async (req = request, res = response) => {
 
     let newCantidadCalificacion = cantidadCalificacion + 1;
 
-    let newCalificacion = ( (cantidadCalificacion * calificacion) + Number(req.body.calificacion) ) / newCantidadCalificacion;
+    let newCalificacion = ( (cantidadCalificacion * calificacion) + (req.body.nueva) ) / newCantidadCalificacion;
 
     //return res.send({ newCantidadCalificacion, calificacion });
 
     await user.update({
-        calificacion: Math.floor(newCalificacion),
+        calificacion: newCalificacion,
         cantidadCalificacion: Math.floor( newCantidadCalificacion )
     });
 

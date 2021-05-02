@@ -5,6 +5,7 @@ import { DenunciaService } from '../../servicios/denuncia.service';
 import { ComentarioService } from '../../servicios/comentario.service';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-vendedor',
@@ -14,24 +15,28 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 export class PerfilVendedorComponent implements OnInit {
 
   productos: any = [];
-  calificacion : any;
+  calificacion: any;
   idUser: any;
+  vendedor: any;
+  idVendedor: any = 0;
+  estrellas: any[] = [];
 
-  
 
-   formularioComentario = new FormControl({
+
+
+  formularioComentario = new FormControl({
     contenido: new FormControl('', [Validators.required]),
-   });
+  });
 
-   backendHost: string = 'http://localhost:3500';
+  backendHost: string = 'http://localhost:3500';
   //comentario: any = [];
 
   // formularioDenuncia = new FormGroup({
   //   contenido: new FormControl('', [Validators.required]),
   // });
-  
+
   denuncia: any = {
-    contenido:" ",
+    contenido: " ",
   };
 
   formularioEstrellas = new FormGroup({
@@ -42,19 +47,35 @@ export class PerfilVendedorComponent implements OnInit {
     estrella5: new FormControl('', [Validators.required]),
   });
 
-  constructor(private httpClient: HttpClient,private serviceComentario: ComentarioService,private serviceProducto: ProductoService, private serviceDenuncia: DenunciaService, private serviceUser : UsuarioService) { }
+  constructor(private activatedRoute: ActivatedRoute, private httpClient: HttpClient, private serviceComentario: ComentarioService, private serviceProducto: ProductoService, private serviceDenuncia: DenunciaService, private serviceUser: UsuarioService) {
+
+    this.idVendedor = this.activatedRoute.snapshot.paramMap.get("id");
+
+  }
 
   ngOnInit(): void {
     this.obtenerProductos();
     this.obtenerLocalStorage();
     this.obtenerDenuncias();
-    
+    this.obtenerVendedor();
   }
 
-  get nombre(){ return this.formularioEstrellas.get('estrella1');}
+  obtenerVendedor() {
 
-  obtenerLocalStorage(){
-    var idUsuario:any = localStorage.getItem("user");
+    this.estrellas = [];
+
+    this.serviceUser.obtenerUsuario(this.idVendedor).subscribe((data: any) => {
+      this.vendedor = data;
+
+      for (let index = 0; index < this.vendedor.calificacion; index++) {
+        this.estrellas.push({ numero: index });
+      }
+    })
+  }
+  get nombre() { return this.formularioEstrellas.get('estrella1'); }
+
+  obtenerLocalStorage() {
+    var idUsuario: any = localStorage.getItem("user");
     console.log(idUsuario);
   }
 
@@ -79,13 +100,19 @@ export class PerfilVendedorComponent implements OnInit {
 
   //AGREGAR CALIFICACION 
 
- agregarCalificacion(id:any, calificacion: any){
-   this.serviceUser.agregarCalificacion(this.idUser, this.calificacion).subscribe((data: any)=>{
+  calificarVendedor(calificacion: any) {
+    let data = {
+      nueva: (calificacion / 5)
+    }
+    this.serviceUser.agregarCalificacion(this.idVendedor, data).subscribe((data: any) => {
+      this.obtenerVendedor();
+      console.log(data)
+    })
+  }
 
-    
-   })
-   
- }
+
+
+
 
   // denuncia(){
   //   console.log(this.formularioDenuncia.valid)
@@ -95,19 +122,18 @@ export class PerfilVendedorComponent implements OnInit {
   //         this.obtenerDenuncias();
   //       });
   // }
-  enviarDenuncia(){
-    this.httpClient.post(`${this.backendHost}/denuncia`,this.denuncia)
-    .subscribe(res => {
-      
-      console.log(res);
-    });
+  enviarDenuncia() {
+    this.httpClient.post(`${this.backendHost}/denuncia`, this.denuncia)
+      .subscribe(res => {
+        console.log(res);
+      });
   }
 
-  enviarComentario(){
+  enviarComentario() {
     this.serviceComentario.guardarComentario(this.formularioComentario)
       .subscribe((res: any) => {
-      console.log(res);
-    
+        console.log(res);
+
       });
   }
 }

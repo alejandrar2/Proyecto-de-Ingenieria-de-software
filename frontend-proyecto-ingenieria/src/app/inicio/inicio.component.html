@@ -87,7 +87,7 @@
 			<div class="images_main">
 				<h3 *ngIf="productosDepartamentoCategoria.length==0">No hay resultados</h3>
 
-				<h2 *ngIf="productosDepartamentoCategoria.length!=0" > {{ filtro }} </h2>
+				<h2 *ngIf="productosDepartamentoCategoria.length!=0"> {{ filtro }} </h2>
 
 				<div class="row">
 					<div *ngFor="let item of productosDepartamentoCategoria" class="col-sm-6 col-md-6 col-lg-3">
@@ -194,18 +194,18 @@
 		</div>
 		<!-- search box end -->
 		<!-- section PROMOTED start -->
-		<div class=" layout_padding promoted_sectipon " >
+		<div class=" layout_padding promoted_sectipon ">
 			<div class="container">
 				<h1 class="promoted_text">Productos<span style="border-bottom: 5px solid #4bc714;"></span></h1>
 				<div class="images_main">
 					<h3 *ngIf="productosPrecioFechaCalificacion.length==0">No hay resultados</h3>
 
-					<h2 *ngIf="productosPrecioFechaCalificacion.length>0" > {{ filtro }} </h2>
+					<h2 *ngIf="productosPrecioFechaCalificacion.length>0"> {{ filtro }} </h2>
 					<div class="row">
 						<div *ngFor="let item of productosPrecioFechaCalificacion" class="col-sm-6 col-md-6 col-lg-3">
 							<div class="images"><img src="{{ item.producto.imagen}}" style="width: 100%;"></div>
 							<button class="promoted_bt">{{ item.producto.nombre }}</button>
-							<button class="mobile_bt"><a href="#">Contactar vendedor</a></button>
+							<a [routerLink]="['/perfil-vendedor', item.userId]" >Contactar vendedor</a>
 						</div>
 
 					</div>

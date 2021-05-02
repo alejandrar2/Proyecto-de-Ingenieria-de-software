@@ -35,7 +35,7 @@ export class UsuarioService {
 
  // AGREGAR CALIFICACION 
   agregarCalificacion(iduser:any, calificacion: any){
-    return this.http.put(this.urlApi + '/calificacion/' + iduser , {calificacion})
+    return this.http.put(this.urlApi + '/calificacion/' + iduser , calificacion)
 
   }
 
