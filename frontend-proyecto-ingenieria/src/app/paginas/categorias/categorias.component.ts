@@ -20,6 +20,9 @@ export class CategoriasComponent implements OnInit {
 
   constructor(private httpClient: HttpClient, private serviceCategoria: CategoriaService) { }
 
+  mensaje : String = '';
+  alert: any;
+
   ngOnInit(){
     this.httpClient.get(`${this.backendHost}/categoria`)
       .subscribe(res => {
@@ -34,6 +37,8 @@ export class CategoriasComponent implements OnInit {
       .subscribe((res: any)=>{
         console.log(res);
         this.categorias.push(res);
+        this.mensaje= 'Agregado correctamente'
+        this.alert= 'success'
         
       });
   }
@@ -47,6 +52,9 @@ export class CategoriasComponent implements OnInit {
         }
         
       });
+
+      this.mensaje = 'Eliminado con exito';
+        this.alert = 'danger';
   }  
 
 }
