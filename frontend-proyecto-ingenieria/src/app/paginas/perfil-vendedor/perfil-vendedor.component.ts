@@ -108,7 +108,7 @@ export class PerfilVendedorComponent implements OnInit {
       nueva: calificacion
     }
     this.serviceUser.agregarCalificacion(this.idVendedor, data).subscribe((data: any) => {
-      this.obtenerVendedor();
+      //this.obtenerVendedor();
       console.log(data)
     })
   }
