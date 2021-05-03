@@ -66,13 +66,16 @@ export class PerfilVendedorComponent implements OnInit {
 
     this.estrellas = [];
 
+
     this.serviceUser.obtenerUsuario(this.idVendedor).subscribe((data: any) => {
       this.vendedor = data;
 
-      for (let index = 0; index < this.vendedor.calificacion; index++) {
+      for (let index = 0; index < data.calificacion; index++) {
         this.estrellas.push({ numero: index });
       }
+      
     })
+
   }
   get nombre() { return this.formularioEstrellas.get('estrella1'); }
 
@@ -104,10 +107,10 @@ export class PerfilVendedorComponent implements OnInit {
 
   calificarVendedor(calificacion: any) {
     let data = {
-      nueva: (calificacion / 5)
+      nueva: calificacion
     }
     this.serviceUser.agregarCalificacion(this.idVendedor, data).subscribe((data: any) => {
-      this.obtenerVendedor();
+      //this.obtenerVendedor();
       console.log(data)
     })
   }
