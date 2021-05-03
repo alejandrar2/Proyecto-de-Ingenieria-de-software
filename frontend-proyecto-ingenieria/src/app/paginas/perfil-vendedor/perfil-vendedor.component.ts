@@ -70,7 +70,7 @@ export class PerfilVendedorComponent implements OnInit {
     this.serviceUser.obtenerUsuario(this.idVendedor).subscribe((data: any) => {
       this.vendedor = data;
 
-      for (let index = 0; index < data.calificacion; index++) {
+      for (let index = 0; index < data.calificacion; ++index) {
         this.estrellas.push({ numero: index });
       }
 
@@ -110,7 +110,7 @@ export class PerfilVendedorComponent implements OnInit {
       nueva: calificacion
     }
     this.serviceUser.agregarCalificacion(this.idVendedor, data).subscribe((data: any) => {
-      //this.obtenerVendedor();
+      this.obtenerVendedor();
       console.log(data)
     })
   }
