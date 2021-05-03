@@ -74,7 +74,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     CommonModule,
-    ChartsModule,
+    ChartsModule
   ],
   exports: [
     AppComponent    

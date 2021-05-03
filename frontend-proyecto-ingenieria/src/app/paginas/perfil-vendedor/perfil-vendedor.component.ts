@@ -20,6 +20,7 @@ export class PerfilVendedorComponent implements OnInit {
   vendedor: any;
   idVendedor: any = 0;
   estrellas: any[] = [];
+  usuarioId: any = 0;
 
 
 
@@ -31,9 +32,10 @@ export class PerfilVendedorComponent implements OnInit {
   backendHost: string = 'http://localhost:3500';
   //comentario: any = [];
 
-  // formularioDenuncia = new FormGroup({
-  //   contenido: new FormControl('', [Validators.required]),
-  // });
+   formularioDenuncia = new FormGroup({
+     contenido: new FormControl('', [Validators.required]),
+     userId: this.usuarioId
+   });
 
   denuncia: any = {
     contenido: " ",
@@ -75,8 +77,8 @@ export class PerfilVendedorComponent implements OnInit {
   get nombre() { return this.formularioEstrellas.get('estrella1'); }
 
   obtenerLocalStorage() {
-    var idUsuario: any = localStorage.getItem("user");
-    console.log(idUsuario);
+    this.usuarioId = localStorage.getItem("user");
+    console.log('este es el id del usuario',this.usuarioId);
   }
 
   obtenerProductos() {
@@ -114,20 +116,20 @@ export class PerfilVendedorComponent implements OnInit {
 
 
 
-  // denuncia(){
-  //   console.log(this.formularioDenuncia.valid)
-  //   this.serviceDenuncia.guardarDenuncia( {data:this.formularioDenuncia.value})
-  //       .subscribe((res: any) => {
-  //         console.log(res);
-  //         this.obtenerDenuncias();
-  //       });
+   enviarDenuncia(){
+     console.log(this.formularioDenuncia.valid)
+     this.serviceDenuncia.guardarDenuncia( {data:this.formularioDenuncia.value})
+         .subscribe((res: any) => {
+           console.log(res);
+           this.obtenerDenuncias();
+         });
+   }
+  // enviarDenuncia() {
+  //   this.httpClient.post(`${this.backendHost}/denuncia`, this.denuncia)
+  //     .subscribe(res => {
+  //       console.log(res);
+  //     });
   // }
-  enviarDenuncia() {
-    this.httpClient.post(`${this.backendHost}/denuncia`, this.denuncia)
-      .subscribe(res => {
-        console.log(res);
-      });
-  }
 
   enviarComentario() {
     this.serviceComentario.guardarComentario(this.formularioComentario)

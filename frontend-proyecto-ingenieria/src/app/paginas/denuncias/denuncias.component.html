@@ -1,1 +1,19 @@
-<p>denuncias works!</p>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Contenido</th>
+        <th scope="col">userId</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let denuncia of denuncias">
+        <td>{{denuncia.id}}</td>
+        <td>{{denuncia.contenido}}</td>
+        <td>{{denuncia.userId}}</td>  
+        <td><button type="button" class="btn btn-danger" (click)="eliminarDenuncia(denuncia.id)">X</button></td>
+      </tr>
+    </tbody>
+  </table>
