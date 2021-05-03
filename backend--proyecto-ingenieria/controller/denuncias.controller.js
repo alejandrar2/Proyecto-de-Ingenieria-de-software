@@ -1,15 +1,12 @@
 const { response, request } = require('express');
 const Denuncia = require('../models/denuncia');
+const User = require('../models/user');
 
 
 // OBTENER DENUNCIAS
 const getDenuncias = async (req = request, res = response) => {
 
-    const denuncias = await Denuncia.findAll();
-
-    if (denuncias.length == 0) {
-        return res.send({ mensaje: 'No hay data' });
-    }
+    const denuncias = await Denuncia.findAll({});
 
     res.send(denuncias);
 
@@ -20,9 +17,11 @@ const getDenuncias = async (req = request, res = response) => {
 const createDenuncia = async (req = request, res = response) => {
 
     const newDenuncia = await Denuncia.create({
-        contenido: req.body.contenido,
-        userId: req.body.userId
+        contenido: req.body.data.contenido,
+        userId: Number(req.body.userId)
     });
+
+    console.log(req.body)
 
     res.send(newDenuncia);
 
@@ -50,7 +49,7 @@ const deleteDenuncia = async (req = request, res = response) => {
 
     const denuncia = await Denuncia.findByPk(req.params.id);
 
-    if (!Denuncia ) {
+    if (!Denuncia) {
         return res.send({ mensaje: `Denuncia no existe` });
     }
 
@@ -60,11 +59,11 @@ const deleteDenuncia = async (req = request, res = response) => {
         }
     });
 
-    res.send({ codigoResultado:1 ,mensaje: `Denuncia eliminada con exito` });
+    res.send({ codigoResultado: 1, mensaje: `Denuncia eliminada con exito` });
 
-//AGREGAR DENUNCIA USUARIO
+    //AGREGAR DENUNCIA USUARIO
 
-    
+
 
 }
 

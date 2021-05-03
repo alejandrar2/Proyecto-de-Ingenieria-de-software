@@ -32,10 +32,10 @@ export class PerfilVendedorComponent implements OnInit {
   backendHost: string = 'http://localhost:3500';
   //comentario: any = [];
 
-   formularioDenuncia = new FormGroup({
-     contenido: new FormControl('', [Validators.required]),
-     userId: this.usuarioId
-   });
+  formularioDenuncia = new FormGroup({
+    contenido: new FormControl('', [Validators.required]),
+    userId: new FormControl('', [Validators.required]),
+  });
 
   denuncia: any = {
     contenido: " ",
@@ -73,7 +73,7 @@ export class PerfilVendedorComponent implements OnInit {
       for (let index = 0; index < data.calificacion; index++) {
         this.estrellas.push({ numero: index });
       }
-      
+
     })
 
   }
@@ -81,7 +81,7 @@ export class PerfilVendedorComponent implements OnInit {
 
   obtenerLocalStorage() {
     this.usuarioId = localStorage.getItem("user");
-    console.log('este es el id del usuario',this.usuarioId);
+    console.log('este es el id del usuario', this.usuarioId);
   }
 
   obtenerProductos() {
@@ -119,14 +119,18 @@ export class PerfilVendedorComponent implements OnInit {
 
 
 
-   enviarDenuncia(){
-     console.log(this.formularioDenuncia.valid)
-     this.serviceDenuncia.guardarDenuncia( {data:this.formularioDenuncia.value})
-         .subscribe((res: any) => {
-           console.log(res);
-           this.obtenerDenuncias();
-         });
-   }
+  enviarDenuncia() {
+
+   
+
+    console.log(this.formularioDenuncia.value);
+
+    this.serviceDenuncia.guardarDenuncia({data: this.formularioDenuncia.value, userId: this.usuarioId})
+      .subscribe((res: any) => {
+        console.log(res);
+        this.obtenerDenuncias();
+      });
+  }
   // enviarDenuncia() {
   //   this.httpClient.post(`${this.backendHost}/denuncia`, this.denuncia)
   //     .subscribe(res => {

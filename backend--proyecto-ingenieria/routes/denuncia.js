@@ -8,8 +8,6 @@ router.get('/:id', getDenuncia);
 
 router.post('/', createDenuncia);
 
-
-
 router.delete('/:id', deleteDenuncia);
 
 module.exports = router;

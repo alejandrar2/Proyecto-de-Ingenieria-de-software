@@ -11,7 +11,7 @@ export class DenunciasComponent implements OnInit {
 
   constructor(private denunciaService: DenunciaService) { }
 
-  denuncias:any = [];
+  denuncias:any[] = [];
 
   ngOnInit(): void {
     this.obtenerDenuncias();
@@ -22,13 +22,7 @@ export class DenunciasComponent implements OnInit {
   obtenerDenuncias(){
     this.denunciaService.obtenerDenuncias()
       .subscribe((res:any) =>{
-         console.log(res);
          this.denuncias = res
       });
-  }
-
-  eliminarDenuncia(id:any){
-
-    
   }
 }
