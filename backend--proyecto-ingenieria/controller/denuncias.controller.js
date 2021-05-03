@@ -20,7 +20,8 @@ const getDenuncias = async (req = request, res = response) => {
 const createDenuncia = async (req = request, res = response) => {
 
     const newDenuncia = await Denuncia.create({
-        contenido: req.body.contenido
+        contenido: req.body.contenido,
+        userId: req.body.userId
     });
 
     res.send(newDenuncia);
@@ -60,6 +61,10 @@ const deleteDenuncia = async (req = request, res = response) => {
     });
 
     res.send({ codigoResultado:1 ,mensaje: `Denuncia eliminada con exito` });
+
+//AGREGAR DENUNCIA USUARIO
+
+    
 
 }
 
