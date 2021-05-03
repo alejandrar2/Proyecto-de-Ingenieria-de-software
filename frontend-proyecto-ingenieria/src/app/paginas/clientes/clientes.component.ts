@@ -14,8 +14,12 @@ export class ClientesComponent implements OnInit {
   backendHost: string = 'http://localhost:3500';
 
   constructor(private httpClient: HttpClient) { }
+  mensaje : String = '';
+  alert: any;
 
   ngOnInit() {
+
+    
 
     this.httpClient.get(`${this.backendHost}/user`)
       .subscribe(res => {
@@ -33,5 +37,9 @@ export class ClientesComponent implements OnInit {
           this.personas.splice(res, 1);
         }
       });
-  }
+
+      this.mensaje = 'Eliminado con exito';
+        this.alert = 'danger';
+  }  
+
 }

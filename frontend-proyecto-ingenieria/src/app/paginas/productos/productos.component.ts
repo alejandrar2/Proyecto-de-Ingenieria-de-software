@@ -29,6 +29,8 @@ export class ProductosComponent implements OnInit {
   imagenSubida = false;
   backendHost: string = 'http://localhost:3500';
   producto: any = [];
+  mensaje: String = '';
+  alert: any;
 
   ngOnInit(): void {
 
@@ -48,12 +50,6 @@ export class ProductosComponent implements OnInit {
 
     });
   }
-
-  // obtenerProducto() {
-  //   this.serviceProducto.obtenerProducto('1').subscribe((data: any) => {
-  //     console.log(data);
-  //   });
-  // }
 
   subirImagen(e: any) {
     let file = e.target.files[0];
@@ -80,12 +76,14 @@ export class ProductosComponent implements OnInit {
       console.log(res);
       this.obtenerProductos();
       this.limpiarCampos();
-      
+      this.mensaje = 'Agregado correctamente'
+      this.alert = 'success'
+
     });
 
   }
 
-  limpiarCampos(){
+  limpiarCampos() {
     this.formularioProducto.setValue({
       nombre: '',
       descripcion: '',
@@ -93,19 +91,21 @@ export class ProductosComponent implements OnInit {
       precio: '',
       fecha: '',
       categoriumId: ''
-    
+
 
     })
 
   }
 
 
-  
+
 
   eliminarProducto(idProducto: any) {
     this.serviceProducto.eliminarProducto(idProducto).subscribe((res: any) => {
       console.log(res);
       this.obtenerProductos();
+      this.mensaje = 'Eliminado con exito';
+      this.alert = 'danger';
     });
 
 
