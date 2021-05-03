@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DenunciaService } from 'src/app/servicios/denuncia.service';
+
 
 @Component({
   selector: 'app-denuncias',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DenunciasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private denunciaService: DenunciaService) { }
+
+  denuncias:any = [];
 
   ngOnInit(): void {
+    this.obtenerDenuncias();
+    
   }
 
+  //OBTENER DENUNCIAS
+  obtenerDenuncias(){
+    this.denunciaService.obtenerDenuncias()
+      .subscribe((res:any) =>{
+         console.log(res);
+         this.denuncias = res
+      });
+  }
+
+  eliminarDenuncia(id:any){
+
+    
+  }
 }

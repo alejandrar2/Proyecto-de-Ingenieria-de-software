@@ -1,6 +1,7 @@
 const { response, request } = require('express');
 const Users = require('../models/user');
 const Personas = require('../models/persona');
+const User = require('../models/user');
 
 
 

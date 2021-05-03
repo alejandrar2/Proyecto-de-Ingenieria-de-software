@@ -94,7 +94,7 @@
 					<div *ngFor="let item of productosDepartamentoCategoria" class="col-sm-6 col-md-6 col-lg-3">
 						<div class="images"><img src="{{ item.producto.imagen}}" style="width: 100%;"></div>
 						<button class="promoted_bt">{{ item.producto.nombre }}</button>
-						<button class="mobile_bt"><a href="#">Contactar vendedor</a></button>
+						<button class="mobile_bt"><a class="nav-item nav-link" routerLink="/perfil-vendedor/:id">Contactar vendedor</a></button>
 					</div>
 
 				</div>
